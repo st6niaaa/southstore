@@ -1,0 +1,13 @@
+
+@font-face {
+    font-family: myFirstFont;
+    src: url('../fonts/SF-Pro-Display-Regular.otf');
+}
+
+.font-family {
+    font-family: myFirstFont;
+}
+
+.font-family-bold {
+    src: url('../fonts/SF-Pro-Display-Bold.otf');
+}
