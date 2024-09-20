@@ -2,7 +2,7 @@
     <section class="h-[500px] flex bg-cover bg-center w-full relative" style="background-image: url('{{ asset('img/fundo.png') }}');">
         <div class="absolute inset-0 bg-black opacity-70"></div> <!-- Overlay -->
         <div class="container mx-auto text-white relative flex items-center justify-start"> <!-- Aligns items to the left -->
-            <div class=" py-12 px-5 text-left"> <!-- Text on the left -->
+            <div class="py-12 px-5 md:px-[120px] text-left"> <!-- Text on the left -->
                 <h1 class="font-family-bold text-5xl font-medium mb-6">South Store</h1>
                 <p class="font-family text-xl mb-12">Seja bem-vindo ao site da melhor loja de aparelhos Apple de Canguçu e região!</p>
             </div>
