@@ -38,7 +38,7 @@
                 </p>
     
               </div>
-              <div class="font-family sm:gap-4 sm:items-center sm:flex sm:mt-4">
+              <div class="font-family sm:mt-4">
                     <select id="colorSelect" class="border border-gray-300 rounded-md p-2">
                         <option selected>Selecione a cor</option>
                         <option value="black">Preto</option>
