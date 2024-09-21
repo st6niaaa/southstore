@@ -94,7 +94,7 @@
       </section>
 
       <script>
-    const images = [
+   const images = [
     '<?php echo asset("img/i12/1.png"); ?>',
     '<?php echo asset("img/i12/2.png"); ?>',
     '<?php echo asset("img/i12/3.png"); ?>',
@@ -132,7 +132,7 @@ function changeImage(index) {
 // Mouse down event
 function onMouseDown(event) {
     isDragging = true;
-    startX = event.clientX;
+    startX = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX; // Handle touch
     viewer.style.cursor = 'grabbing';
 }
 
@@ -140,11 +140,11 @@ function onMouseDown(event) {
 function onMouseMove(event) {
     if (!isDragging) return;
 
-    const moveX = startX - event.clientX;
+    const moveX = startX - (event.type === 'mousemove' ? event.clientX : event.touches[0].clientX); // Handle touch
     if (Math.abs(moveX) > 30) { // Sensitivity
         currentIndex = (currentIndex + (moveX > 0 ? 1 : -1) + images.length) % images.length;
         changeImage(currentIndex);
-        startX = event.clientX; // Reset start position
+        startX = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX; // Reset start position
     }
 }
 
@@ -154,9 +154,15 @@ function onMouseUp() {
     viewer.style.cursor = 'grab';
 }
 
-// Event listeners
+// Event listeners for mouse
 viewer.addEventListener('mousedown', onMouseDown);
 viewer.addEventListener('mousemove', onMouseMove);
 viewer.addEventListener('mouseup', onMouseUp);
+
+// Event listeners for touch
+viewer.addEventListener('touchstart', onMouseDown);
+viewer.addEventListener('touchmove', onMouseMove);
+viewer.addEventListener('touchend', onMouseUp);
+
     </script>
 </div>
