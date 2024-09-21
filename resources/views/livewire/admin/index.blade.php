@@ -1,27 +1,52 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<div class="font-family">
+  <div class="p-2 w-full">
+    <h1 class="font-family-bold text-3xl mb-3">Olá, {{ auth()->user()->name }}</h1>
 
-<div>
-    <div class="font-family md:flex flex-col md:flex-row md:min-h-screen w-full">
-      <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
-        <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
-            <img class="h-[40px] rounded" src="{{ asset('img/logo-wb.png') }}" />
-          <a href="#" class="md:mr-8 text-lg font-semibold text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">South Store</a>
-          <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-              <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-              <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-          </button>
+    <div class="grid grid-cols-12 gap-4">
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-blue-100 text-blue-500">
+            <i class="fa fa-users"></i>
+          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Novos Clientes /mês</div>
+            <div class="font-bold text-lg">1259</div>
+          </div>
         </div>
-        <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
-          <p class="text-sm opacity-70">Commons</p>
-          <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-solid fa-house cursor-pointer mr-2 block lg:hidden"></i> Início</a>
-          <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-user cursor-pointer mr-2 block lg:hidden"></i> Sua conta</a>
-          <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-solid fa-right-from-bracket cursor-pointer mr-2 block lg:hidden"></i> Desconectar</a>
-          <p class="text-sm opacity-70 mt-2">Produtos</p>
-          <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-solid fa-list cursor-pointer mr-2 block lg:hidden"></i>Produtos</a>
-          <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-solid fa-layer-group cursor-pointer mr-2 block lg:hidden"></i>Estoque</a>
-        </nav>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-green-100 text-green-500">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Vendas /mês</div>
+            <div class="font-bold text-lg">230</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-orange-100 text-orange-500">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Receita /mês</div>
+            <div class="font-bold text-lg">R$ 150.000</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 sm:col-span-6 md:col-span-3">
+        <div class="flex flex-row bg-white shadow-sm rounded p-4">
+          <div class="flex items-center justify-center flex-shrink-0 h-12 w-12 rounded-xl bg-red-100 text-red-500">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div class="flex flex-col flex-grow ml-4">
+            <div class="text-sm text-gray-500">Receita /ano</div>
+            <div class="font-bold text-lg">R$ 1.500.000</div>
+          </div>
+        </div>
       </div>
     </div>
+  </div>
 </div>

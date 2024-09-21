@@ -6,7 +6,9 @@ use App\Livewire\Products;
 use App\Livewire\Qs;
 use App\Livewire\Contact;
 use App\Livewire\Products\View;
+
 use App\Livewire\Auth\Login;
+use App\Http\Controllers\logoutController;
 
 use App\Livewire\Admin\Index as Dashboard;
 
@@ -35,5 +37,9 @@ Route::get('/product-view', View::class)->name('PV');
 
 Route::middleware('guest')->group(function () {
     Route::get('/acesso', Login::class)->name('login');
+});
+
+Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/admin/logout', logoutController::class)->name('logout');
 });
