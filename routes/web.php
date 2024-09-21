@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Landing;
+use App\Livewire\Products;
+use App\Livewire\Qs;
+use App\Livewire\Contact;
+use App\Livewire\Products\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +23,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', Landing::class)->name('Home');
+Route::get('/produtos', Products::class)->name('Products');
+Route::get('/quemsomos', Qs::class)->name('QS');
+Route::get('/contato', Contact::class)->name('Contact');
+
+Route::get('/product-view', View::class)->name('PV');

@@ -1,7 +1,12 @@
 
 @font-face {
     font-family: myFirstFont;
-    src: url('../fonts/SF-Pro-Display-Regular.otf');
+    src: url('../fonts/SF-Pro.ttf');
+}
+
+@font-face {
+    font-family: SFSFont;
+    src: url('../fonts/SF-Pro-Display-Bold.otf');
 }
 
 .font-family {
@@ -9,5 +14,5 @@
 }
 
 .font-family-bold {
-    src: url('../fonts/SF-Pro-Display-Bold.otf');
+    font-family: SFSFont;
 }

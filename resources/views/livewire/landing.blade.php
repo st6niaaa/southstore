@@ -1,17 +1,109 @@
+<style>
+  .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      background-position: center;
+  }
+
+  .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.7); /* Black overlay with 70% opacity */
+      z-index: 1;
+  }
+
+  .hero-content {
+      position: relative;
+      z-index: 2; /* Ensure content is above the overlay */
+      color: white;
+      text-align: center;
+  }
+</style>
+
 <div>
-    <section class="h-[500px] flex bg-cover bg-center w-full relative" style="background-image: url('{{ asset('img/fundo.png') }}');">
-        <div class="absolute inset-0 bg-black opacity-70"></div> <!-- Overlay -->
-        <div class="container mx-auto text-white relative flex items-center justify-start"> <!-- Aligns items to the left -->
-            <div class="py-12 px-5 md:px-[120px] text-left"> <!-- Text on the left -->
-                <h1 class="font-family-bold text-5xl font-medium mb-6">South Store</h1>
-                <p class="font-family text-xl mb-12">Seja bem-vindo ao site da melhor loja de aparelhos Apple de Canguçu e região!</p>
-            </div>
+  <section class="hero" id="heroSection">
+    <div class="hero-overlay"></div> <!-- Overlay for the background -->
+    <div class="hero-content">
+        <h1 class="font-family-bold text-5xl mb-4" id="heroTitle">Hero Title 1</h1>
+        <p class="font-family mb-8" id="heroText">This is the description for image 1.</p>
+        <div class="flex justify-center space-x-4">
+            <button id="prevButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Previous</button>
+            <button id="nextButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
         </div>
-    </section>
+    </div>
+</section>
+<script>
+  const heroSection = document.getElementById('heroSection');
+  const heroTitle = document.getElementById('heroTitle');
+  const heroText = document.getElementById('heroText');
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+
+  const heroData = [
+      {
+          image: '<?php echo asset("img/fundo.png"); ?>',  // PHP function to output the asset URL
+          title: 'South Store',
+          text: 'A melhor loja de dispositivos Apple de Canguçu e região!'
+      },
+      {
+          image: '<?php echo asset("img/fundo.png"); ?>',  // PHP function to output the asset URL
+          title: 'Reposição de seminovos, garanta agora!',
+          text: 'This is the description for image 2.'
+      },
+      {
+          image: 'https://via.placeholder.com/800x400/3357FF/FFFFFF?text=Hero+Image+3',
+          title: 'Hero Title 3',
+          text: 'This is the description for image 3.'
+      }
+  ];
+
+  let currentIndex = 0;
+  let interval;
+
+  function updateHero() {
+      const currentHero = heroData[currentIndex];
+      heroSection.style.backgroundImage = `url(${currentHero.image})`;
+      heroTitle.innerText = currentHero.title;
+      heroText.innerText = currentHero.text;
+  }
+
+  function nextHero() {
+      currentIndex = (currentIndex + 1) % heroData.length;
+      updateHero();
+  }
+
+  function prevHero() {
+      currentIndex = (currentIndex - 1 + heroData.length) % heroData.length;
+      updateHero();
+  }
+
+  prevButton.addEventListener('click', () => {
+      prevHero();
+      resetInterval();
+  });
+
+  nextButton.addEventListener('click', () => {
+      nextHero();
+      resetInterval();
+  });
+
+  function resetInterval() {
+      clearInterval(interval);
+      interval = setInterval(nextHero, 5000);
+  }
+
+  interval = setInterval(nextHero, 5000); // Change every 3 seconds
+  updateHero(); // Initial call
+</script>
+
     <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
         <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
 
-        <h2 class="mt-3 mb-3 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Adicionados Recentemente</h2>
+        <h2 class="font-family mt-3 mb-3 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Adicionados Recentemente</h2>
           <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
 
             <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
@@ -25,7 +117,7 @@
               <div class="pt-6">
         
       
-                <a href="#" class="text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Apple iPhone 15 Pro Max</a>
+                <a href="#" class="font-family text-lg font-semibold leading-tight text-gray-900 hover:underline dark:text-white">Apple iPhone 15 Pro Max</a>
       
                 <div class="mt-2 flex items-center gap-2">
                   <div class="flex items-center">
@@ -77,7 +169,7 @@
                 </ul>
       
                 <div class="mt-4 flex items-center justify-between gap-4">
-                  <p class="text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">R$5,500</p>
+                  <p class="font-family text-2xl font-extrabold leading-tight text-gray-900 dark:text-white">R$5,500</p>
       
                   <button type="button" class="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                     <svg class="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

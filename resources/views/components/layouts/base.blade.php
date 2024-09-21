@@ -35,7 +35,7 @@
               <div x-data="{ open: true }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                 <div class="flex flex-row items-center justify-between p-4">
                   <img src="{{ asset('img/logo-wb.png') }}" class="h-[25px] rounded mr-2" />
-                  <a href="#" class="font-family text-lg font-semibold tracking-widest text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">South Store</a>
+                  <a href="{{ Route('Home') }}" class="font-family text-lg font-semibold tracking-widest text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">South Store</a>
                   <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                       <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
@@ -44,9 +44,9 @@
                   </button>
                 </div>
                 <nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
-                  <a class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Produtos</a>
-                  <a class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Quem Somos</a>
-                  <a class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">Contato</a>
+                  <a href="{{ Route('Products') }}" class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Produtos</a>
+                  <a href="{{ Route('QS') }}" class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Quem Somos</a>
+                  <a href="{{ Route('Contact') }}" class="font-family px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">Contato</a>
                 </nav>
               </div>
             </div>
@@ -62,14 +62,14 @@
                         <img class="w-auto h-7 rounded" src="{{ asset('img/logo-wb.png') }}" alt="">
                     </a>
         
-                    <p class="max-w-full mx-auto mt-4 text-gray-500 dark:text-gray-400">South Store, a melhor loja de dispositivos Apple em Canguçu e região!</p>
+                    <p class="font-family max-w-full mx-auto mt-4 text-gray-500 dark:text-gray-400">South Store, a melhor loja de dispositivos Apple de Canguçu e região!</p>
         
                     
                 </div>
         
                 <hr class="my-10 border-gray-200 dark:border-gray-700" />
         
-                <div class="flex flex-col items-center sm:flex-row sm:justify-between">
+                <div class="font-family flex flex-col items-center sm:flex-row sm:justify-between">
                     <p class="text-sm text-gray-500">© Copyright 2022 - {{ date('Y') }}. Alguns direitos reservados.</p>
         
                     <div class="flex mt-3 -mx-2 sm:mt-0">
