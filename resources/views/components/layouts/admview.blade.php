@@ -19,8 +19,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <script src="https://cdn.tailwindcss.com"></script>
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
         @livewireStyles
 
@@ -33,7 +31,7 @@
         <div class="flex flex-col md:flex-row md:min-h-screen w-full">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
             
-            <div @click.away="open = true" x-data="{ open: false }" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
+            <div @click.away="open = false" x-data="{ open: false }" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0">
               <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
                 <img class="h-[35px] rounded" src="{{ asset('img/logo-wb.png') }}" />
                 <a href="#" class="md:mr-8 text-lg font-semibold text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">South Store</a>
@@ -46,8 +44,8 @@
               </div>
               <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
                 <p class="text-sm opacity-70">Comuns  </p>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href=""><i class="fa-solid fa-house cursor-pointer mr-2 block lg:hidden"></i> Início</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-user cursor-pointer mr-2 block lg:hidden"></i> Sua conta</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('dashboard') }}"><i class="fa-solid fa-house cursor-pointer mr-2 block lg:hidden"></i> Início</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('profile') }}"><i class="fa-regular fa-user cursor-pointer mr-2 block lg:hidden"></i> Sua conta</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('logout') }}"><i class="fa-solid fa-right-from-bracket cursor-pointer mr-2 block lg:hidden"></i> Desconectar</a>
                 <p class="text-sm opacity-70 mt-2">Categorias</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-folder cursor-pointer mr-2 block lg:hidden"></i>Categorias</a>

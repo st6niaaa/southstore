@@ -1,6 +1,6 @@
 <div class="font-family">
   <div class="p-2 w-full">
-    <h1 class="font-family-bold text-3xl mb-3">Olá, {{ auth()->user()->name }}</h1>
+    <h1 class="text-2xl font-family-bold text-blue-700 mb-3">{{ $greeting }}, {{ explode(' ', auth()->user()->name)[0] }}</h1>
 
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 sm:col-span-6 md:col-span-3">

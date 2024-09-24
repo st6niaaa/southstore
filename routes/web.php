@@ -11,6 +11,7 @@ use App\Livewire\Auth\Login;
 use App\Http\Controllers\logoutController;
 
 use App\Livewire\Admin\Index as Dashboard;
+use App\Livewire\Admin\Commons\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/admin/logout', logoutController::class)->name('logout');
+
+    Route::get('/admin/profile', Profile::class)->name('profile');
 });
