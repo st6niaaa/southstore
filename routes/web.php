@@ -14,6 +14,8 @@ use App\Http\Controllers\logoutController;
 use App\Livewire\Admin\Index as Dashboard;
 use App\Livewire\Admin\Commons\Profile;
 
+use App\Http\Controllers\ImageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,4 +49,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/logout', logoutController::class)->name('logout');
 
     Route::get('/admin/profile', Profile::class)->name('profile');
+    route::post('/image/upload', [ImageController::class, 'upload'])->name('image.upload');
 });

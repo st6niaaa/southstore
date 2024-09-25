@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Sonata\GoogleAuthenticator\GoogleAuthenticator;
 use App\Services\NotificationService;
+use Illuminate\Support\Facades\Storage;
 
 class Profile extends Component
 {
@@ -98,7 +99,7 @@ class Profile extends Component
             }
 
         redirect()->route('profile');
-    }
+    }    
 
     public function render()
     {
