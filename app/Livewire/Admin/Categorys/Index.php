@@ -43,6 +43,7 @@ class Index extends Component
         } else {
             $notificationService->notify("error", "A categoria não foi encontrada!", 3000);
         }
+        redirect()->route('categories');
     }
 
     public function render()

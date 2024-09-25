@@ -99,7 +99,7 @@
                         <label for="file-upload" class="cursor-pointer text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">
                             Upload Image
                         </label>
-                        <input id="file-upload" type="file" name="image" required class="hidden" />
+                        <input id="file-upload" type="file" name="image" multiple  required class="hidden" />
                     </div>
                          
               </div>

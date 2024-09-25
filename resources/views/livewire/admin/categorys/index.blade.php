@@ -30,9 +30,12 @@
                         {{ $category->created_at->format('d/m/Y')  }}
                     </td>
                     <td class="px-6 py-4">
-                        <button onclick="setDeleteId({{ $category->id }})">
-                            <i class="fa fa-trash text-red-500"></i>
-                        </button>
+                      <button wire:click="deleteCategory({{ $category->id }})">
+                          <i class="fa fa-trash text-red-500"></i>
+                      </button>
+                      <a href="{{  route('categories.edit', $category->id) }}"><button>
+                          <i class="fa fa-pen text-blue-500"></i>
+                      </button></a>
                     </td>
                 </tr>
                 @endforeach

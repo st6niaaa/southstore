@@ -12,10 +12,18 @@ use App\Livewire\Auth\Twofa;
 use App\Http\Controllers\logoutController;
 
 use App\Livewire\Admin\Index as Dashboard;
-use App\Livewire\Admin\Commons\Profile;
-use App\Livewire\Admin\Categorys\Index as Categorys;
 
+use App\Livewire\Admin\Commons\Profile;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\fileController;
+
+use App\Livewire\Admin\Categorys\Index as Categorys;
+use App\Livewire\Admin\Categorys\Edit as CategoryEdit;
+
+use App\Livewire\Admin\Products\Index as ProductsAdmin;
+use App\Livewire\Admin\Products\Create as CreateProduct;
+use App\Livewire\Admin\Products\Edit as EditProduct;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,4 +61,10 @@ Route::middleware('auth')->group(function () {
     route::post('/image/upload', [ImageController::class, 'upload'])->name('image.upload');
 
     Route::get('/admin/categorys', Categorys::class)->name('categories');
+    Route::get('/admin/categorys/edit/{id}', CategoryEdit::class)->name('categories.edit');
+
+    Route::get('/admin/products', ProductsAdmin::class)->name('admin.products');
+    Route::get('/admin/products/create', CreateProduct::class)->name('admin.products.create');
+    Route::get('/admin/products/edit/{id}', EditProduct::class)->name('admin.products.edit');
+    route::post('/admin/products/upload', [fileController::class, 'upload'])->name('file.upload');
 });
