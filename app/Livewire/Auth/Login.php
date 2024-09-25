@@ -33,6 +33,10 @@ class Login extends Component
             $this->addError('auth', trans('auth.failed'));
             return;
         }
+
+        if ($user->two_factor_secret) {
+            return redirect()->route('login.twofa')->with('userData', ['user' => $user->id, 'two_factor_secret' => $user->two_factor_secret, 'email' => $this->email, 'password' => $this->password, 'remember' => $this->remember]);
+        }
     
         if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             $this->addError('auth', trans('auth.failed'));

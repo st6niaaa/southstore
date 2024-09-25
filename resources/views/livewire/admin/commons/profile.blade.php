@@ -37,7 +37,6 @@
                         <div class="sm:col-span-2">
                             <label for="region" class="block text-sm font-medium leading-6 text-gray-900">2FA</label>
                             <div class="mt-2">
-                                <!-- if user have 2fa -->
                                 @if (auth()->user()->two_factor_secret == NULL)
                                     <button onclick="openModal()" class="text-sm bg-blue-600 hover:bg-blue-700 text-white py-2 px-3 rounded-md">Autenticação de dois fatores</button>
                                 @else
@@ -48,13 +47,42 @@
                     </div>
             </div>
             <div class="mt-3">
-                <button wire:click="userEdit" class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Save</button>
-                <button wire:click="testFeatures" class="text-sm bg-transparent border border-blue-600 hover:bg-gray-200 py-1 px-3 rounded-md">Alterar Senha</button>
+                <button wire:click="userEdit" class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Salvar</button>
+                <button onclick="openModalPassword()" class="text-sm bg-transparent border border-blue-600 hover:bg-gray-200 py-1 px-3 rounded-md">Alterar Senha</button>
 
             </div>
         </div>
     </div>
-    <div class="modal hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+    
+    <!-- Change Password -->
+    <div class="modalp hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+      <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+          <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-orange-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <i class="fa fa-key text-orange-600"></i>
+              </div>
+              <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                <h3 class="text-base font-semibold leading-6 text-gray-900" id="modal-title">Alteração de Senha</h3>
+                <div class="">
+                  <div class="flex justify-center">
+                  </div>
+                  <p class="text-sm text-gray-500 mb-3">Insira sua senha nova abaixo.<p>
+                  <input wire:model="actualpassword" type="password" name="actualpassword" id="actualpassword" placeholder="Senha Antiga" class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">                
+                  <input wire:model="newpassword" type="password" name="newpassword" id="newpassword" placeholder="Senha Nova" class="mt-3 block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">                
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+            <button wire:click="changePassword" type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">Confirmar</button>
+            <button onclick="closeModalPassword()" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Cancelar</button>
+          </div>
+        </div>
+    </div>
+    
+      <!-- 2FA -->
+      <div class="modal hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
       @if (auth()->user()->two_factor_secret == NULL)
         <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
             <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
@@ -104,7 +132,8 @@
        
 
         @endif
-        </div>
+      </div>
+
     <style>
         .modal {
           display: none;
@@ -117,6 +146,19 @@
         }
 
         .modal.closing {
+          animation: fadeOut 0.3s ease-in-out;
+        }
+        .modalp {
+          display: none;
+          /* Additional styles for modal */
+        }
+
+        .modalp.open {
+          display: flex;
+          animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .modalp.closing {
           animation: fadeOut 0.3s ease-in-out;
         }
 
@@ -142,6 +184,22 @@
         function openModal() {
           const modal = document.querySelector('.modal');
           modal.classList.add('open');
+        }
+
+        function openModalPassword() {
+          const modal = document.querySelector('.modalp');
+          modal.classList.add('open');
+        }
+
+        function closeModalPassword() {
+          const modal = document.querySelector('.modalp');
+          modal.classList.remove('open');
+          modal.classList.add('closing');
+        
+          setTimeout(() => {
+            modal.classList.remove('closing');
+            modal.classList.add('hidden'); // Add this line to hide the modal after the animation
+          }, 300); // Adjust the timeout duration as needed
         }
         
         function closeModal() {

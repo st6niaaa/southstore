@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Commons;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Sonata\GoogleAuthenticator\GoogleAuthenticator;
 use App\Services\NotificationService;
 
@@ -14,6 +15,8 @@ class Profile extends Component
     public string $secret;
     public string $qrCodeURL;
     public string $verifycode;
+    public string $actualpassword;
+    public string $newpassword;
 
     public function mount()
     {
@@ -76,6 +79,24 @@ class Profile extends Component
         } else {
             $notificationService->notify("error", "Código de verificação inválido!", 3000);
         }
+        redirect()->route('profile');
+    }
+
+    public function changePassword()
+    {
+        $notificationService = new NotificationService();
+        $user = User::findOrFail(auth()->user()->id);
+        if (password_verify($this->actualpassword, $user->password)) {
+                $user->password = Hash::make($this->newpassword);
+                if ($user->save()) {
+                    $notificationService->notify("success", "Senha alterada com sucesso!", 3000);
+                } else {
+                    $notificationService->notify("error", "Senha não pôde ser alterada! Um erro foi encontrado", 3000);
+                }
+            } else {
+                $notificationService->notify("error", "A senha atual não coincide!", 3000);
+            }
+
         redirect()->route('profile');
     }
 

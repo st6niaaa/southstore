@@ -8,6 +8,7 @@ use App\Livewire\Contact;
 use App\Livewire\Products\View;
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Auth\Twofa;
 use App\Http\Controllers\logoutController;
 
 use App\Livewire\Admin\Index as Dashboard;
@@ -38,6 +39,7 @@ Route::get('/product-view', View::class)->name('PV');
 
 Route::middleware('guest')->group(function () {
     Route::get('/acesso', Login::class)->name('login');
+    Route::get('/acesso/twofa', Twofa::class)->name('login.twofa');
 });
 
 Route::middleware('auth')->group(function () {
