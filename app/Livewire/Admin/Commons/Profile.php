@@ -8,7 +8,6 @@ use Sonata\GoogleAuthenticator\GoogleAuthenticator;
 
 class Profile extends Component
 {
-    use Notifiable;
     public string $name;
     public string $email;
     public string $secret;
