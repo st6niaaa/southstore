@@ -27,7 +27,8 @@
 
     </head>
 
-    <body class="bg-gray-200">
+    <body class="bg-gray-200">    
+      @livewire('notifications') 
         <div class="flex flex-col md:flex-row md:min-h-screen w-full">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
             
