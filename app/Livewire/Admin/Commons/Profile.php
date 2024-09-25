@@ -25,10 +25,6 @@ class Profile extends Component
         $this->qrCodeURL = $googleAuthenticator->getURL('SouthStore', $this->email, $this->secret);
     }
 
-    public function testFeatures()
-    {
-    }
-
     public function userEdit()
     {
         $notificationService = new NotificationService();
@@ -47,13 +43,40 @@ class Profile extends Component
     public function verifyCode()
     {
         $googleAuthenticator = new GoogleAuthenticator();
-        $isValid = $googleAuthenticator->checkCode($this->secret, $this->twofacode);
+        $notificationService = new NotificationService();
+        $isValid = $googleAuthenticator->checkCode($this->secret, $this->verifycode);
         if ($isValid) {
-            $this->isOpen = false;
-            $this->user->twofa_secret = $this->secret;
-            $this->user->save();
-    
+            $user = User::findOrFail(auth()->user()->id);
+            $user->two_factor_secret = $this->secret;
+            if ($user->save()) {
+                $notificationService->notify("success", "Autenticação de dois fatores habilitada com sucesso!", 3000);
+            } else {
+                $notificationService->notify("error", "Autenticação de dois fatores não foi habilitada! Um erro foi encontrado", 3000);
+            }
+        } else {
+            $notificationService->notify("error", "Código de verificação inválido!", 3000);
         }
+        redirect()->route('profile');
+    }
+
+    public function removetwofa()
+    {
+        $googleAuthenticator = new GoogleAuthenticator();
+        $notificationService = new NotificationService();
+        $isValid = $googleAuthenticator->checkCode(auth()->user()->two_factor_secret, $this->verifycode);
+
+        if ($isValid) {
+            $user = User::findOrFail(auth()->user()->id);
+            $user->two_factor_secret = null;
+            if ($user->save()) {
+                $notificationService->notify("success", "Autenticação de dois fatores removida com sucesso!", 3000);
+            } else {
+                $notificationService->notify("error", "Autenticação de dois fatores não foi removida! Um erro foi encontrado", 3000);
+            }
+        } else {
+            $notificationService->notify("error", "Código de verificação inválido!", 3000);
+        }
+        redirect()->route('profile');
     }
 
     public function render()
