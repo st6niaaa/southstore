@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class logoutController extends Controller
 {
-    
     public function __invoke(): RedirectResponse
     {
         Auth::logout();

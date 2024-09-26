@@ -51,9 +51,10 @@
                 <p class="text-sm opacity-70 mt-2">Produtos</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('categories') }}"><i class="fa-regular fa-folder cursor-pointer mr-2 block lg:hidden"></i>Categorias</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.products') }}"><i class="fa-solid fa-list cursor-pointer mr-2 block lg:hidden"></i>Produtos</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-credit-card cursor-pointer mr-2 block lg:hidden"></i>Nova Venda</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-money-bill-1 cursor-pointer mr-2 block lg:hidden"></i>Vendas</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('sales') }}"><i class="fa-regular fa-money-bill-1 cursor-pointer mr-2 block lg:hidden"></i>Vendas</a>
                 <p class="text-sm opacity-70 mt-2">Personalização</p>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('hero') }}"><i class="fa-solid fa-plane-arrival cursor-pointer mr-2 block lg:hidden"></i>Hero</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('hero') }}"><i class="fa-solid fa-share-from-square cursor-pointer mr-2 block lg:hidden"></i>Social</a>
               </nav>
             </div>
             <div class="flex-grow py-2 px-3">

@@ -9,8 +9,8 @@
             <i class="fa fa-users"></i>
           </div>
           <div class="flex flex-col flex-grow ml-4">
-            <div class="text-sm text-gray-500">Novos Clientes /mês</div>
-            <div class="font-bold text-lg">1259</div>
+            <div class="text-sm text-gray-500">Vendas /mês</div>
+            <div class="font-bold text-lg">{{ $salesPerMonth }}</div>
           </div>
         </div>
       </div>
@@ -20,8 +20,8 @@
             <i class="fa-solid fa-bag-shopping"></i>
           </div>
           <div class="flex flex-col flex-grow ml-4">
-            <div class="text-sm text-gray-500">Vendas /mês</div>
-            <div class="font-bold text-lg">230</div>
+            <div class="text-sm text-gray-500">Vendas /ano</div>
+            <div class="font-bold text-lg">{{ $salesPerYear }}</div>
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@
           </div>
           <div class="flex flex-col flex-grow ml-4">
             <div class="text-sm text-gray-500">Receita /mês</div>
-            <div class="font-bold text-lg">R$ 150.000</div>
+            <div class="font-bold text-lg">R$ {{ $revenuePerMonth }}</div>
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
           </div>
           <div class="flex flex-col flex-grow ml-4">
             <div class="text-sm text-gray-500">Receita /ano</div>
-            <div class="font-bold text-lg">R$ 1.500.000</div>
+            <div class="font-bold text-lg">R$ {{ $revenuePerYear }}</div>
           </div>
         </div>
       </div>
