@@ -11,6 +11,7 @@ class Create extends Component
     public string $name = '';
     public string $category = '';
     public string $price = '';
+    public string $image;
     public $description;
 
     public function createProduct()
@@ -20,6 +21,7 @@ class Create extends Component
             'category' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'image' => 'required',
         ]);
 
         Products::create([
@@ -27,6 +29,7 @@ class Create extends Component
             'category_id' => $this->category,
             'price' => $this->price,
             'description' => $this->description,
+            'image_url' => $this->image,
         ]);
 
         redirect()->route('admin.products');

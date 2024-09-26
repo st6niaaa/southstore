@@ -9,6 +9,27 @@ use Carbon\Carbon;
 
 class Products extends Component
 {
+    public string $categoryid;
+    public $products;
+    public $productscount;
+
+    public function mount($id = null)
+    {
+        // se for diferente de nulo
+        if ($id) {
+            $this->categoryid = $id;
+            $this->products = Product::orderBy('created_at', 'desc')
+            ->where('category_id', $id)
+            ->get();
+            $this->productscount = Product::where('category_id', $id)->count();
+        } else {
+            $this->products = Product::orderBy('created_at', 'desc')
+            ->get();
+            $this->productscount = Product::count();
+        }
+        
+    }
+
     public function SevenDaysVerify($id)
     {
         $product = Product::find($id);
@@ -26,13 +47,11 @@ class Products extends Component
     public function render()
     {
         $categories = categorys::all();
-        $products = Product::orderBy('created_at', 'desc')->get();
-        $productscount = Product::count();
 
         return view('livewire.products', [
             'categories' => $categories,
-            'products' => $products,
-            'productscount' => $productscount,
+            'products' => $this->products,
+            'productscount' => $this->productscount,
         ]);
     }
 }

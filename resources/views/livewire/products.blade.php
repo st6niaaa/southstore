@@ -3,8 +3,11 @@
         <div class="container px-6 py-8 mx-auto">
             <div class="lg:flex lg:-mx-2">
                 <div class="space-y-3 lg:w-1/5 lg:px-2 lg:space-y-4">
+                  <a href="{{ Route('Products') }}" class="font-family block font-medium text-gray-500 hover:text-blue-600">Todos os Produtos</a>
                   @foreach ($categories as $category)
-                    <a href="#" class="font-family block font-medium text-gray-500 hover:text-blue-600">{{ $category->name }}</a>
+                  <a href="{{ Route('Products', $category->id) }}" class="font-family block font-medium text-gray-500 hover:text-blue-600">
+                    {{ $category->name }}
+                  </a>
                   @endforeach
                 </div>
 
@@ -15,14 +18,6 @@
                       @else
                       <p class="font-family text-gray-500">{{ $productscount }} Produtos</p>
                       @endif
-                        <div class="flex items-center">
-                            <p class="font-family text-gray-500">Sort</p>
-                            <select class="font-family font-medium text-gray-700 bg-transparent focus:outline-none">
-                                <option value="#">Recommended</option>
-                                <option value="#">Size</option>
-                                <option value="#">Price</option>
-                            </select>
-                        </div>
                     </div>
 
                     <div class="mb-4 mt-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
@@ -31,7 +26,11 @@
                         <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
                           <a href="{{ Route('PV', $product->id) }}">
                             <div class="h-56 w-full">
-                                <img class="mx-auto h-full" src="{{ asset('img/i12/7.png') }}" alt="" />
+                              @if (file_exists(public_path('img/products/' . $product->id . '/5.png')))
+                                  <img class="mx-auto h-full" src="{{ asset('img/products/' . $product->id . '/5.png') }}" alt="" />
+                              @else
+                                  <img class="mx-auto h-full" src="{{ $product->image_url }}" alt="" />
+                              @endif
                             </div>
                     
                             <div class="pt-6">
@@ -45,8 +44,7 @@
                                     </li>
                                   </ul>
                               @endif
-                             
-                    
+
                               <div class="mt-2 flex items-center justify-between gap-4">
                                 <p class="font-family text-2xl font-extrabold leading-tight text-gray-900">R${{ $product->price }}</p>
                              

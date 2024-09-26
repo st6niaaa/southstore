@@ -14,6 +14,7 @@ class Edit extends Component
     public $category;
     public $price;
     public $description;
+    public $image;
 
     public function mount(string|int $id)
     {
@@ -22,6 +23,7 @@ class Edit extends Component
         $this->category = $this->product->category_id;
         $this->price = $this->product->price;
         $this->description = $this->product->description;
+        $this->image = $this->product->image_url;
     }
 
     public function editProduct()
@@ -32,6 +34,7 @@ class Edit extends Component
             'category' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'image' => 'required',
         ]);
 
         $product = Products::find($this->product->id);
@@ -39,6 +42,7 @@ class Edit extends Component
         $product->category_id = $this->category;
         $product->price = $this->price;
         $product->description = $this->description;
+        $product->image_url = $this->image;
         if ($product->save()) {
             $notificationService->notify("success", "Produto '" . $this->name . "' editado com sucesso!", 3000);
         } else {

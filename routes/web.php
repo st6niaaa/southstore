@@ -42,7 +42,7 @@ Route::get('/', function () {
 });
 
 Route::get('/', Landing::class)->name('Home');
-Route::get('/produtos', Products::class)->name('Products');
+Route::get('/produtos/{id?}', Products::class)->name('Products');
 Route::get('/quemsomos', Qs::class)->name('QS');
 Route::get('/contato', Contact::class)->name('Contact');
 

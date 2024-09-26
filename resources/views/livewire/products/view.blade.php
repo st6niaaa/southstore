@@ -19,7 +19,11 @@
             <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
 
                 <div class="imgrfd">
-                    <div id="viewer" class="w-[350px]"></div>
+                  @if (file_exists(public_path('img/products/' . $product->id . '/5.png')))
+                      <div id="viewer" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
+                  @else
+                      <img class="mx-auto h-full" src="{{ $product->image_url }}" alt="" />
+                  @endif
                 </div>
             </div>
     
@@ -73,25 +77,24 @@
     
               <p class="mb-6 text-gray-500">
                 {!! $product->description !!}
-            </p>
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <script>
-   const images = [
-    '<?php echo asset("img/i12/1.png"); ?>',
-    '<?php echo asset("img/i12/2.png"); ?>',
-    '<?php echo asset("img/i12/3.png"); ?>',
-    '<?php echo asset("img/i12/4.png"); ?>',
-    '<?php echo asset("img/i12/7.png"); ?>',
-    '<?php echo asset("img/i12/8.png"); ?>',
-    '<?php echo asset("img/i12/6.png"); ?>',
-    '<?php echo asset("img/i12/5.png"); ?>',
-];
+        console.log("Product ID:", {{ $product->id }}); // Add this line for debugging
+        
+        const viewer = document.getElementById('viewer');
+        const productId = viewer.dataset.productId;
+        
+        const images = [
+            @for ($i = 1; $i <= 8; $i++)
+                '{{ asset("img/products/" . $product->id . "/" . $i . ".png") }}',
+            @endfor
+        ];
 
-const viewer = document.getElementById('viewer');
 let currentIndex = 0;
 let isDragging = false;
 let startX;

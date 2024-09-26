@@ -5,9 +5,12 @@ namespace App\Livewire\Admin\Products;
 use Livewire\Component;
 use App\Models\Products;
 use App\Services\NotificationService;
+use Livewire\WithPagination; 
 
 class Index extends Component
 {
+    use WithPagination; // Apply the trait
+
     public function deleteProduct($id)
     {
         $notificationService = new NotificationService();

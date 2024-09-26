@@ -6,9 +6,12 @@ use Livewire\Component;
 use App\Models\categorys;
 use App\Models\Products;
 use App\Services\NotificationService;
+use Livewire\WithPagination; 
 
 class Index extends Component
 {
+    use WithPagination; // Apply the trait
+
     public $name;
     
     protected $rules = [
@@ -51,7 +54,7 @@ class Index extends Component
 
     public function render()
     {
-        $categories = categorys::get();
+        $categories = categorys::paginate(10);
 
         return view('livewire.admin.categorys.index', [
             'categories' => $categories,

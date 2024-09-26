@@ -54,6 +54,15 @@
                 </tr>
              
                 @endforeach
+
+          
+                @if ($products->hasPages())
+                    <tr class="bg-white"> 
+                        <td colspan="5" class="py-1 px-3 text-center">
+                            {{ $products->links() }} 
+                        </td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>

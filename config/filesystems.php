@@ -28,6 +28,16 @@ return [
     |
     */
 
+    'channels' => [
+        // ... other channels
+        
+        'storage' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/storage.log'),
+            'level' => 'debug',
+        ],
+    ],
+
     'disks' => [
 
         'local' => [
