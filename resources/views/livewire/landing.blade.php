@@ -28,11 +28,11 @@
   <section class="hero" id="heroSection">
     <div class="hero-overlay"></div> <!-- Overlay for the background -->
     <div class="hero-content">
-        <h1 class="font-family-bold text-5xl mb-4" id="heroTitle">Hero Title 1</h1>
-        <p class="font-family mb-8" id="heroText">This is the description for image 1.</p>
+        <h1 class="font-family-bold text-5xl mb-4" id="heroTitle">SouthStore</h1>
+        <p class="font-family mb-8" id="heroText">South Desc</p>
         <div class="flex justify-center space-x-4">
-            <button id="prevButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Previous</button>
-            <button id="nextButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</button>
+            <button id="prevButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Voltar</button>
+            <button id="nextButton" class="font-family bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Próximo</button>
         </div>
     </div>
 </section>
@@ -43,32 +43,17 @@
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
 
-  const heroData = [
-      {
-          image: '<?php echo asset("img/fundo.png"); ?>',  // PHP function to output the asset URL
-          title: 'South Store',
-          text: 'A melhor loja de dispositivos Apple de Canguçu e região!'
-      },
-      {
-          image: '<?php echo asset("img/fundo.png"); ?>',  // PHP function to output the asset URL
-          title: 'Reposição de seminovos, garanta agora!',
-          text: 'This is the description for image 2.'
-      },
-      {
-          image: 'https://via.placeholder.com/800x400/3357FF/FFFFFF?text=Hero+Image+3',
-          title: 'Hero Title 3',
-          text: 'This is the description for image 3.'
-      }
-  ];
+  // Fetch hero data from Livewire
+  const heroData = @json($heroes); 
 
   let currentIndex = 0;
   let interval;
 
   function updateHero() {
       const currentHero = heroData[currentIndex];
-      heroSection.style.backgroundImage = `url(${currentHero.image})`;
+      heroSection.style.backgroundImage = `url(${currentHero.image_url})`;
       heroTitle.innerText = currentHero.title;
-      heroText.innerText = currentHero.text;
+      heroText.innerText = currentHero.description;
   }
 
   function nextHero() {
