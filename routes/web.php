@@ -33,6 +33,9 @@ use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
 use App\Livewire\Admin\Custom\Hero\Edit as HeroEdit;
 
+use App\Livewire\Admin\Custom\Qs\Index as QsIndex;
+use App\Livewire\Admin\Custom\Contact\Index as ContactIndex;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +88,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');
     Route::get('/admin/custom/hero/edit/{id}', HeroEdit::class)->name('hero.edit');
+
+    Route::get('/admin/custom/qs', QsIndex::class)->name('admin.qs');
+    Route::get('/admin/custom/contact', ContactIndex::class)->name('admin.contact');
 });

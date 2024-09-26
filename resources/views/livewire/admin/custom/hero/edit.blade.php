@@ -1,5 +1,5 @@
 <div class="font-family p-2">
-    <h1 class="text-2xl font-bold text-blue-700 mb-3">Editar Produto</h1>
+    <h1 class="text-2xl font-bold text-blue-700 mb-3">Editar Hero</h1>
        <div class="bg-white h-full p-3 rounded-lg flex flex-col sm:flex-row">
            <div class="relative w-full">
                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">

@@ -54,7 +54,8 @@
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('sales') }}"><i class="fa-regular fa-money-bill-1 cursor-pointer mr-2 block lg:hidden"></i>Vendas</a>
                 <p class="text-sm opacity-70 mt-2">Personalização</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('hero') }}"><i class="fa-solid fa-plane-arrival cursor-pointer mr-2 block lg:hidden"></i>Hero</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('hero') }}"><i class="fa-solid fa-share-from-square cursor-pointer mr-2 block lg:hidden"></i>Social</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.qs') }}"><i class="fa-solid fa-user cursor-pointer mr-2 block lg:hidden"></i>Quem Somos</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.contact') }}"><i class="fa-solid fa-address-book cursor-pointer mr-2 block lg:hidden"></i>Contato</a>
               </nav>
             </div>
             <div class="flex-grow py-2 px-3">
