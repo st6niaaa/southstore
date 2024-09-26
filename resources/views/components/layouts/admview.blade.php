@@ -44,18 +44,16 @@
                 </button>
               </div>
               <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
-                <p class="text-sm opacity-70">Comuns  </p>
+                <p class="text-sm opacity-70">Comuns</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('dashboard') }}"><i class="fa-solid fa-house cursor-pointer mr-2 block lg:hidden"></i> Início</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('profile') }}"><i class="fa-regular fa-user cursor-pointer mr-2 block lg:hidden"></i> Sua conta</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('logout') }}"><i class="fa-solid fa-right-from-bracket cursor-pointer mr-2 block lg:hidden"></i> Desconectar</a>
-                <p class="text-sm opacity-70 mt-2">Categorias</p>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('categories') }}"><i class="fa-regular fa-folder cursor-pointer mr-2 block lg:hidden"></i>Categorias</a>
                 <p class="text-sm opacity-70 mt-2">Produtos</p>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('categories') }}"><i class="fa-regular fa-folder cursor-pointer mr-2 block lg:hidden"></i>Categorias</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.products') }}"><i class="fa-solid fa-list cursor-pointer mr-2 block lg:hidden"></i>Produtos</a>
-                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-solid fa-layer-group cursor-pointer mr-2 block lg:hidden"></i>Estoque</a>
-                <p class="text-sm opacity-70 mt-2">Vendas</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-credit-card cursor-pointer mr-2 block lg:hidden"></i>Nova Venda</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="#"><i class="fa-regular fa-money-bill-1 cursor-pointer mr-2 block lg:hidden"></i>Vendas</a>
+                <p class="text-sm opacity-70 mt-2">Personalização</p>
               </nav>
             </div>
             <div class="flex-grow py-2 px-3">

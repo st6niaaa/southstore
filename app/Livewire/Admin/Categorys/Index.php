@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Categorys;
 
 use Livewire\Component;
 use App\Models\categorys;
+use App\Models\Products;
 use App\Services\NotificationService;
 
 class Index extends Component
@@ -43,6 +44,8 @@ class Index extends Component
         } else {
             $notificationService->notify("error", "A categoria não foi encontrada!", 3000);
         }
+        // delete related products
+        Products::where('category_id', $id)->delete();
         redirect()->route('categories');
     }
 

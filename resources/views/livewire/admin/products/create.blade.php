@@ -1,5 +1,4 @@
 <div class="font-family p-2">
- {{ $description }}
  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
  <h1 class="text-2xl font-bold text-blue-700 mb-3">Novo Produto</h1>

@@ -30,9 +30,10 @@
     </head>
 
     <body class="font-inter bg-gray-100">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
             <div class="antialiased bg-gray-100 dark-mode:bg-gray-900">
             <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
-              <div x-data="{ open: 'true' }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+              <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                 <div class="flex flex-row items-center justify-between p-4">
                   <img src="{{ asset('img/logo-wb.png') }}" class="h-[25px] rounded mr-2" />
                   <a href="{{ Route('Home') }}" class="font-family text-lg font-semibold text-gray-900 rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">South Store</a>

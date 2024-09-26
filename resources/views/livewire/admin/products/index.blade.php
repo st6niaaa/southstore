@@ -41,16 +41,23 @@
                         {{ $product->created_at->format('d/m/Y')  }}
                     </td>
                     <td class="px-6 py-4">
-                      <button wire:click="deleteCategory({{ $product->id }})">
+                      <button wire:click="deleteProduct({{ $product->id }})">
                           <i class="fa fa-trash text-red-500"></i>
                       </button>
-                      <a href="{{  route('categories.edit', $product->id) }}"><button>
+                      <a href="{{  route('admin.products.edit', $product->id) }}"><button class="">
                           <i class="fa fa-pen text-blue-500"></i>
                       </button></a>
+                      <a href="{{  route('admin.products.threedview', $product->id) }}"><button class="">
+                          <i class="fa-brands fa-unity text-green-500"></i>
+                      </button>
                     </td>
                 </tr>
+             
                 @endforeach
             </tbody>
         </table>
     </div>
+
+    
+
 </div>

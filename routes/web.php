@@ -23,6 +23,7 @@ use App\Livewire\Admin\Categorys\Edit as CategoryEdit;
 use App\Livewire\Admin\Products\Index as ProductsAdmin;
 use App\Livewire\Admin\Products\Create as CreateProduct;
 use App\Livewire\Admin\Products\Edit as EditProduct;
+use App\Livewire\Admin\Products\Threedview;
 
 
 /*
@@ -45,7 +46,7 @@ Route::get('/produtos', Products::class)->name('Products');
 Route::get('/quemsomos', Qs::class)->name('QS');
 Route::get('/contato', Contact::class)->name('Contact');
 
-Route::get('/product-view', View::class)->name('PV');
+Route::get('/produto/{id}', View::class)->name('PV');
 
 
 Route::middleware('guest')->group(function () {
@@ -66,5 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/products', ProductsAdmin::class)->name('admin.products');
     Route::get('/admin/products/create', CreateProduct::class)->name('admin.products.create');
     Route::get('/admin/products/edit/{id}', EditProduct::class)->name('admin.products.edit');
+    route::get('/admin/products/Threedview/{id}', Threedview::class, 'upload')->name('admin.products.threedview');
     route::post('/admin/products/upload', [fileController::class, 'upload'])->name('file.upload');
 });
