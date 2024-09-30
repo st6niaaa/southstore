@@ -33,6 +33,10 @@ use App\Livewire\Admin\Manager\Relatory\Index as RelatoryIndex;
 use App\Livewire\Admin\Manager\Relatory\Create as CreateRelatory;
 use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
 
+use App\Livewire\Admin\Manager\Users\Index as UsersIndex;
+use App\Livewire\Admin\Manager\Users\Create as UsersCreate;
+use App\Livewire\Admin\Manager\Users\Edit as UsersEdit;
+
 use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
 use App\Livewire\Admin\Custom\Hero\Edit as HeroEdit;
@@ -92,6 +96,10 @@ Route::middleware('auth')->group(function () {
     route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
     route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');
     Route::get('/admin/relatory/edit/{id}', EditRelatory::class)->name('relatory.edit');
+
+    Route::get('/admin/users', UsersIndex::class)->name('users');
+    Route::get('/admin/users/create', UsersCreate::class)->name('users.create');
+    Route::get('/admin/users/edit/{id}', UsersEdit::class)->name('users.edit');
 
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');
