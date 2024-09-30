@@ -29,6 +29,10 @@ use App\Livewire\Admin\Sales\Index as Sales;
 use App\Livewire\Admin\Sales\Create as CreateSale;
 use App\Livewire\Admin\Sales\Edit as EditSale;
 
+use App\Livewire\Admin\Manager\Relatory\Index as RelatoryIndex;
+use App\Livewire\Admin\Manager\Relatory\Create as CreateRelatory;
+use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
+
 use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
 use App\Livewire\Admin\Custom\Hero\Edit as HeroEdit;
@@ -84,6 +88,10 @@ Route::middleware('auth')->group(function () {
     route::get('/admin/sales', Sales::class)->name('sales');
     route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');
     route::get('/admin/sales/edit/{id}', EditSale::class)->name('sales.edit');
+    
+    route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
+    route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');
+    Route::get('/admin/relatory/edit/{id}', EditRelatory::class)->name('relatory.edit');
 
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');
