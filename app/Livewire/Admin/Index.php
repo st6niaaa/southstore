@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Sales;
+use App\Models\Relatory;
 
 class Index extends Component
 {
@@ -22,6 +23,25 @@ class Index extends Component
             $greeting = "Boa noite";
         }
 
+        $addvalueyear = Relatory::where('type', 0)
+            ->whereYear('created_at', $currentTime->year)
+            ->sum('value');
+    
+        $reducevalueyear = Relatory::where('type', 1)
+            ->whereYear('created_at', $currentTime->year)
+            ->sum('value');
+
+        $addvaluemonth = Relatory::where('type', 0)
+            ->whereYear('created_at', $currentTime->year) 
+            ->whereMonth('created_at', $currentTime->month)
+            ->sum('value');
+        
+        $reducevaluemonth = Relatory::where('type', 1)
+            ->whereYear('created_at', $currentTime->year) 
+            ->whereMonth('created_at', $currentTime->month)
+            ->sum('value');
+    
+
         // Calculate Sales and Revenue Metrics
         $salesPerMonth = Sales::whereYear('created_at', $currentTime->year)
             ->whereMonth('created_at', $currentTime->month)
@@ -36,7 +56,12 @@ class Index extends Component
 
         $revenuePerYear = Sales::whereYear('created_at', $currentTime->year)
             ->sum('price');
-
+        
+        $revenuePerMonth += $addvaluemonth;
+        $revenuePerMonth -= $reducevaluemonth;
+        
+        $revenuePerYear += $addvalueyear;
+        $revenuePerYear -= $reducevalueyear;
         // Format revenue with "k" for thousands
         $formattedRevenuePerMonth = $this->formatRevenue($revenuePerMonth);
         $formattedRevenuePerYear = $this->formatRevenue($revenuePerYear);
@@ -45,6 +70,8 @@ class Index extends Component
             'greeting' => $greeting,
             'salesPerMonth' => $salesPerMonth,
             'salesPerYear' => $salesPerYear,
+            'revenuePerMonthChart' => $revenuePerMonth,
+            'revenuePerYearChart' => $revenuePerYear,
             'revenuePerMonth' => $formattedRevenuePerMonth, 
             'revenuePerYear' => $formattedRevenuePerYear, 
         ])->layout('components.layouts.admin');
