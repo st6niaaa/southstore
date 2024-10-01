@@ -62,7 +62,7 @@
                       <button wire:click="deleteUser({{ $user->id }})">
                           <i class="fa fa-trash text-red-500"></i>
                       </button>
-                      <a href="{{  route('admin.products.edit', $user->id) }}"><button class="">
+                      <a href="{{  route('users.edit', $user->id) }}"><button class="">
                           <i class="fa fa-pen text-blue-500"></i>
                       </button></a>
                       <button wire:click="blockUser({{ $user->id }})">
