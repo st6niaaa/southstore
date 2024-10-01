@@ -25,7 +25,13 @@ class Login extends Component
         $user = User::where('email', $this->email)->first();
 
         if (!$user) {
-            $this->addError('auth', trans('auth.failed'));
+            $this->addError('auth', 'E-Mail ou Senha incorretos!');
+            return;
+        }
+
+        if ($user->status == "Blocked")
+        {
+            $this->addError('auth', 'Usuário Bloqueado!');
             return;
         }
         

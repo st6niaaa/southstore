@@ -32,7 +32,7 @@
                         @if(file_exists(public_path('img/profiles/' . $user->id . '.png'))) 
                             <img class="h-8 w-8 rounded-full bg-gray-100 object-cover object-center mr-2" src="{{ asset('img/profiles/' . $user->id . '.png') }}" alt="{{ $user->name }}'s Profile Picture"> 
                         @endif
-                        @if ($user->role == 'Blocked')
+                        @if ($user->status == 'Blocked')
                             <span class="text-red-500 font-semibold">{{ $user->name }}</span>
                         @else
                             <span class="font-semibold">{{ $user->name }}</span>
@@ -42,13 +42,18 @@
                         {{ $user->email  }}
                     </td>
                     <td class="px-6 py-4">
-                        @if ($user->role == 'Dono')
-                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 uppercase rounded border border-yellow-300"><i class="fa-solid fa-crown"></i> {{ $user->role  }}</span>
-                        @elseif ($user->role == 'Blocked')
+
+                        @if ($user->status == "Blocked")
                             <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 uppercase rounded border border-red-400"><i class="fa-solid fa-xmark"></i> Bloqueado</span>
                         @else
-                            <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 uppercase rounded border border-indigo-400"><i class="fa-solid fa-user"></i> {{ $user->role }}</span>
+                            @if ($user->role == 'Dono')
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 uppercase rounded border border-yellow-300"><i class="fa-solid fa-crown"></i> {{ $user->role  }}</span>
+                            @else
+                                <span class="bg-indigo-100 text-indigo-800 text-xs font-medium me-2 px-2.5 py-0.5 uppercase rounded border border-indigo-400"><i class="fa-solid fa-user"></i> {{ $user->role }}</span>
+                            @endif
                         @endif
+
+                        
                     </td>
                     <td class="px-6 py-4">
                         {{ $user->created_at->format('d/m/Y')  }}
@@ -61,7 +66,7 @@
                           <i class="fa fa-pen text-blue-500"></i>
                       </button></a>
                       <button wire:click="blockUser({{ $user->id }})">
-                        @if ($user->role == 'Blocked')
+                        @if ($user->status == 'Blocked')
                             <i class="fa-solid fa-scale-unbalanced-flip text-green-500"></i>
                         @else
                             <i class="fa-solid fa-ban text-yellow-500"></i>

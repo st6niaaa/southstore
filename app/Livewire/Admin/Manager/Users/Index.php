@@ -16,7 +16,7 @@ class Index extends Component
         $notificationService = new NotificationService();
         $user = User::findOrFail($id);
 
-        if ($user->id == auth()->id()) {
+        if ($user->id == auth()->user()->id) {
             $notificationService->notify("error", "Você não pode deletar seu próprio usuário!");
         } else {
             if ($user->delete()) {
@@ -34,16 +34,16 @@ class Index extends Component
         $notificationService = new NotificationService();
         $user = User::findOrFail($id);
 
-        if ($user->id == auth()->id()) {
+        if ($user->id == auth()->user()->id) {
             $notificationService->notify("error", "Você não pode bloquear seu próprio usuário!");
         } else {
-            if ($user->role == 'Blocked') {
-                $user->role = 'Active';
+            if ($user->status == 'Blocked') {
+                $user->status = null;
                 if ($user->save()) {
                     $notificationService->notify("success", "Usuário desbloqueado com sucesso!");
                 }
             } else {
-                $user->role = 'Blocked';
+                $user->status = 'Blocked';
                 if ($user->save()) {
                     $notificationService->notify("success", "Usuário bloqueado com sucesso!");
                 }

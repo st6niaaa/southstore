@@ -2,6 +2,7 @@
   <div class="p-2 w-full">
     <h1 class="text-2xl font-family-bold text-blue-700 mb-3">{{ $greeting }}, {{ explode(' ', auth()->user()->name)[0] }}</h1>
 
+    @if (auth()->user()->role == "Dono")
     <div class="grid grid-cols-12 gap-4">
       <div class="col-span-12 sm:col-span-6 md:col-span-3">
         <div class="flex flex-row bg-white shadow-sm rounded p-4">
@@ -48,5 +49,6 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
 </div>

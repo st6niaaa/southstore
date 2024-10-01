@@ -1,8 +1,7 @@
 <div class="font-family p-2">
     <div class="flex justify-between items-center mb-2">
         <h1 class="text-2xl font-bold text-blue-700 mb-3">Categorias</h1>
-        <button onclick="openModal()" class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Nova Categoria</button>
-
+        @if (auth()->user()->role == "Dono") <button onclick="openModal()" class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Nova Categoria</button> @endif
     </div>
     <div class="relative overflow-x-auto rounded-md">
       <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -14,9 +13,11 @@
                   <th scope="col" class="px-6 py-3">
                       Criada em
                   </th>
+                  @if (auth()->user()->role == "Dono")
                   <th scope="col" class="px-6 py-3">
                       Ações
                   </th>
+                  @endif
               </tr>
           </thead>
           <tbody>
@@ -28,6 +29,7 @@
                       <td class="px-6 py-4">
                           {{ $category->created_at->format('d/m/Y') }}
                       </td>
+                      @if (auth()->user()->role == "Dono")
                       <td class="px-6 py-4">
                           <button wire:click="deleteCategory({{ $category->id }})">
                               <i class="fa fa-trash text-red-500"></i>
@@ -38,6 +40,7 @@
                               </button>
                           </a>
                       </td>
+                      @endif
                   </tr>
               @endforeach
 
