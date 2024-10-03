@@ -27,7 +27,7 @@
 
     </head>
 
-    <body class="bg-gray-200">
+    <body class="bg-gray-200 font-family">
       
       @if (auth()->user()->status == 'Blocked')
         <script>window.location.href = "{{ route('logout') }}";</script> 

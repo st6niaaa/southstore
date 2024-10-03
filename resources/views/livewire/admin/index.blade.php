@@ -1,6 +1,6 @@
 <div class="font-family">
   <div class="p-2 w-full">
-    <h1 class="text-2xl font-family-bold text-blue-700 mb-3">{{ $greeting }}, {{ explode(' ', auth()->user()->name)[0] }}</h1>
+    <h1 class="text-2xl font-family font-bold text-blue-700 mb-3">{{ $greeting }}, {{ explode(' ', auth()->user()->name)[0] }}</h1>
 
     @if (auth()->user()->role == "Dono")
     <div class="grid grid-cols-12 gap-4">
