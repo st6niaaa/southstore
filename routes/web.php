@@ -29,6 +29,11 @@ use App\Livewire\Admin\Sales\Index as Sales;
 use App\Livewire\Admin\Sales\Create as CreateSale;
 use App\Livewire\Admin\Sales\Edit as EditSale;
 
+use App\Livewire\Admin\Customers\Index as CustomersIndex;
+use App\Livewire\Admin\Customers\Create as CreateCustomers;
+use App\Livewire\Admin\Customers\Edit as EditCustomers;
+use App\Livewire\Admin\Customers\Sale as CreateSaleCustomer;
+
 use App\Livewire\Admin\Manager\Relatory\Index as RelatoryIndex;
 use App\Livewire\Admin\Manager\Relatory\Create as CreateRelatory;
 use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
@@ -92,6 +97,11 @@ Route::middleware('auth')->group(function () {
     route::get('/admin/sales', Sales::class)->name('sales');
     route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');
     route::get('/admin/sales/edit/{id}', EditSale::class)->name('sales.edit');
+
+    route::get('/admin/customers', CustomersIndex::class)->name('customers');
+    route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');
+    route::get('/admin/customers/edit/{id}', EditCustomers::class)->name('customers.edit');
+    route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
     
     route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
     route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');

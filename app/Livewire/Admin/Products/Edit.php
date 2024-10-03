@@ -14,6 +14,7 @@ class Edit extends Component
     public $category;
     public $price;
     public $description;
+    public $bought_value;
     public $image;
 
     public function mount(string|int $id)
@@ -22,6 +23,7 @@ class Edit extends Component
         $this->name = $this->product->name;
         $this->category = $this->product->category_id;
         $this->price = $this->product->price;
+        $this->bought_value = $this->product->bought_value;
         $this->description = $this->product->description;
         $this->image = $this->product->image_url;
     }
@@ -33,6 +35,7 @@ class Edit extends Component
             'name' => 'required',
             'category' => 'required',
             'price' => 'required',
+            'bought_value' => 'required',
             'description' => 'required',
             'image' => 'required',
         ]);
@@ -41,6 +44,7 @@ class Edit extends Component
         $product->name = $this->name;
         $product->category_id = $this->category;
         $product->price = $this->price;
+        $product->bought_value = $this->bought_value;
         $product->description = $this->description;
         $product->image_url = $this->image;
         if ($product->save()) {

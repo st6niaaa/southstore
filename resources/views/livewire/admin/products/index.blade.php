@@ -8,6 +8,9 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Nome do Produto
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -29,8 +32,11 @@
                 @foreach ($products as $product)
                 <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $product->name  }}
+                        {{ $product->id  }}
                     </th>
+                    <td class="px-6 py-4">
+                        {{ $product->name  }}
+                    </td>
                     <td class="px-6 py-4">
                         {{ $product->category_id  }}
                     </td>

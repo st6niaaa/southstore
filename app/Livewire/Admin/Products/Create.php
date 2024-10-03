@@ -11,6 +11,7 @@ class Create extends Component
     public string $name = '';
     public string $category = '';
     public string $price = '';
+    public string $bought_value = '';
     public string $image;
     public $description;
 
@@ -21,6 +22,7 @@ class Create extends Component
             'category' => 'required',
             'price' => 'required',
             'description' => 'required',
+            'bought_value' => 'required',
             'image' => 'required',
         ]);
 
@@ -29,6 +31,7 @@ class Create extends Component
             'category_id' => $this->category,
             'price' => $this->price,
             'description' => $this->description,
+            'bought_value' => $this->bought_value,
             'image_url' => $this->image,
         ]);
 

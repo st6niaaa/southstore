@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sales extends Model
+class Business extends Model
 {
     use HasFactory;
 
+    protected $table = 'business';
+
     protected $fillable = [
+        'corporate_reason',
         'name',
-        'email',
-        'number',
-        'cpf',
+        'cnpj',
+        'legal_nature',
+        'opening_date',
+        'CNAE',
+        'social_capital',
         'address',
-        'product_name',
-        'price',
-        'payment_method',
-        'installments',
-        'created_at',
     ];
 }

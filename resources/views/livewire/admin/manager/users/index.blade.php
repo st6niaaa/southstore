@@ -31,6 +31,8 @@
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap flex items-center"> 
                         @if(file_exists(public_path('img/profiles/' . $user->id . '.png'))) 
                             <img class="h-8 w-8 rounded-full bg-gray-100 object-cover object-center mr-2" src="{{ asset('img/profiles/' . $user->id . '.png') }}" alt="{{ $user->name }}'s Profile Picture"> 
+                        @else
+                            <img class="h-8 w-8 rounded-full bg-gray-100 object-cover object-center mr-2" src="{{ asset('img/logo-wb.png') }}" alt="{{ $user->name }}'s Profile Picture">
                         @endif
                         @if ($user->status == 'Blocked')
                             <span class="text-red-500 font-semibold">{{ $user->name }}</span>

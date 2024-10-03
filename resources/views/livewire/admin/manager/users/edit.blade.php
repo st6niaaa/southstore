@@ -24,7 +24,7 @@
                         <label for="role" class="block text-sm font-medium leading-6 text-gray-900">Cargo</label>
                         <div class="mt-2">
                             <select wire:model="role" id="small" class="block w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
-                                <option selected>Escolha uma cargo</option>
+                                <option selected>Escolha um cargo</option>
                                 <option value="Dono">Dono</option>
                                 <option value="User">Usuário</option>
                             </select>

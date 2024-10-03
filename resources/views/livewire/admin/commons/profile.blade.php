@@ -12,7 +12,11 @@
     @endif
     <div class="bg-white h-full p-3 rounded-lg flex flex-col sm:flex-row">
         <div class="sm:w-1/3">
+          @if(file_exists(public_path('img/profiles/' . auth()->user()->id . '.png'))) 
             <img src="{{ asset('img/profiles/'. auth()->user()->id .'.png') }}" alt="Profile Pic" class="h-[300px] w-[300px] rounded-full mx-auto">
+          @else
+            <img src="{{ asset('img/logo-wb.png') }}" alt="Profile Pic" class="h-[300px] w-[300px] rounded-full mx-auto">          
+          @endif
             <div class="text-center mt-2">
                 <button onclick="openModalPic()" class="text-sm bg-transparent border border-blue-600 hover:bg-gray-200 py-1 px-3 rounded-md">Alterar Imagem</button>
             </div>

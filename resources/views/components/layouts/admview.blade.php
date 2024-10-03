@@ -27,7 +27,12 @@
 
     </head>
 
-    <body class="bg-gray-200">    
+    <body class="bg-gray-200">
+      
+      @if (auth()->user()->status == 'Blocked')
+        <script>window.location.href = "{{ route('logout') }}";</script> 
+      @endif
+      
       @livewire('notifications') 
         <div class="flex flex-col md:flex-row md:min-h-screen w-full">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -48,14 +53,19 @@
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('dashboard') }}"><i class="fa-solid fa-house cursor-pointer mr-2 block lg:hidden"></i> Início</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('profile') }}"><i class="fa-regular fa-user cursor-pointer mr-2 block lg:hidden"></i> Sua conta</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('logout') }}"><i class="fa-solid fa-right-from-bracket cursor-pointer mr-2 block lg:hidden"></i> Desconectar</a>
-                <p class="text-sm opacity-70 mt-2">Produtos</p>
+                <p class="text-sm opacity-70 mt-2">Vendas</p>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('categories') }}"><i class="fa-regular fa-folder cursor-pointer mr-2 block lg:hidden"></i>Categorias</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.products') }}"><i class="fa-solid fa-list cursor-pointer mr-2 block lg:hidden"></i>Produtos</a>
                 <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('sales') }}"><i class="fa-regular fa-money-bill-1 cursor-pointer mr-2 block lg:hidden"></i>Vendas</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('customers') }}"><i class="fa-solid fa-user-tag cursor-pointer mr-2 block lg:hidden"></i>Clientes</a>
+                <p class="text-sm opacity-70 mt-2">Simulações</p>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('sales') }}"><i class="fa-solid fa-credit-card cursor-pointer mr-2 block lg:hidden"></i>Cartão de Crédito</a>
+                <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('sales') }}"><i class="fa-brands fa-apple cursor-pointer mr-2 block lg:hidden"></i>Aparelhos</a>
                 @if (auth()->user()->role == "Dono")
                   <p class="text-sm opacity-70 mt-2">Gestão</p>
                   <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('relatory') }}"><i class="fa-solid fa-right-left cursor-pointer mr-2 block lg:hidden"></i>Entrada/Saida</a>
                   <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('users') }}"><i class="fa-solid fa-users cursor-pointer mr-2 block lg:hidden"></i>Usuários</a>
+                  <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('users') }}"><i class="fa-solid fa-business-time cursor-pointer mr-2 block lg:hidden"></i>Empresa</a>
                   <p class="text-sm opacity-70 mt-2">Personalização</p>
                   <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('hero') }}"><i class="fa-solid fa-plane-arrival cursor-pointer mr-2 block lg:hidden"></i>Hero</a>
                   <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-500 bg-transparent rounded-lg hover:text-gray-600 focus:outline-none focus:shadow-outline" href="{{ Route('admin.qs') }}"><i class="fa-solid fa-user cursor-pointer mr-2 block lg:hidden"></i>Quem Somos</a>
