@@ -27,7 +27,7 @@ class Edit extends Component
 
     public function updateCustomer()
     {
-        $notificationService = new notificationService;
+        $notificationService = new notificationService();
         $this->validate([
             'name' => 'required',
             'email' => 'required',

@@ -1,6 +1,6 @@
 <div class="font-family p-2">
     <div class="flex justify-between items-center mb-2">
-        <h1 class="text-2xl font-bold text-blue-700 mb-3">Calculador de Taxa</h1>
+        <h1 class="text-2xl font-bold text-blue-700 mb-3">Calculadora de Taxas</h1>
         @if (auth()->user()->role == 'Dono')
             <a href="{{ route('manager.simulations.credit')}}"><button class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Listar Taxas</button></a>
         @endif

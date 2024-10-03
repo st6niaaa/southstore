@@ -16,7 +16,7 @@ class Create extends Component
 
     public function createCustomer()
     {
-        $notificationService = new notificationService;
+        $notificationService = new notificationService();
         $this->validate([
             'name' => 'required',
             'email' => 'required',

@@ -23,7 +23,7 @@ class Sale extends Component
 
     public function createSale()
     {
-        $notificationService = new notificationService;
+        $notificationService = new notificationService();
 
         $this->validate([
             'idproduct' => 'required',

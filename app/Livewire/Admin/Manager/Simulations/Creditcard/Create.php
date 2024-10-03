@@ -13,7 +13,7 @@ class Create extends Component
 
     public function createRate()
     {
-        $notificationService = new NotificationService;
+        $notificationService = new notificationService();
         $this->validate([
             'rate_name' => "required",
             'percentagerate' => "required",

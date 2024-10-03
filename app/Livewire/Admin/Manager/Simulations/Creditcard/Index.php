@@ -13,7 +13,7 @@ class Index extends Component
 
     public function deleteRate($id)
     {
-        $notificationService = new notificationService;
+        $notificationService = new notificationService();
         $rate = Simulations::findOrFail($id);
         if ($rate->delete())
         {

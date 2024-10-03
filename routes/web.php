@@ -37,6 +37,14 @@ use App\Livewire\Admin\Customers\Sale as CreateSaleCustomer;
 use App\Livewire\Admin\Simulations\Creditcard;
 use App\Livewire\Admin\Simulations\Devices;
 
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Index as SimuCredit;
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Create as SimuCreditCreate;
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Edit as SimuCreditEdit;
+
+use App\Livewire\Admin\Manager\Simulations\Devices\Index as SimuDevice;
+use App\Livewire\Admin\Manager\Simulations\Devices\Create as SimuDeviceCreate;
+use App\Livewire\Admin\Manager\Simulations\Devices\Edit as SimuDeviceEdit;
+
 use App\Livewire\Admin\Manager\Relatory\Index as RelatoryIndex;
 use App\Livewire\Admin\Manager\Relatory\Create as CreateRelatory;
 use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
@@ -44,10 +52,6 @@ use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
 use App\Livewire\Admin\Manager\Users\Index as UsersIndex;
 use App\Livewire\Admin\Manager\Users\Create as UsersCreate;
 use App\Livewire\Admin\Manager\Users\Edit as UsersEdit;
-
-use App\Livewire\Admin\Manager\Simulations\Creditcard\Index as SimuCredit;
-use App\Livewire\Admin\Manager\Simulations\Creditcard\Create as SimuCreditCreate;
-use App\Livewire\Admin\Manager\Simulations\Creditcard\Edit as SimuCreditEdit;
 
 use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
@@ -62,8 +66,8 @@ use App\Livewire\Admin\Custom\Contact\Index as ContactIndex;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| Here is where you can register web Routes for your application. These
+| Routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
@@ -90,7 +94,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/logout', logoutController::class)->name('logout');
 
     Route::get('/admin/profile', Profile::class)->name('profile');
-    route::post('/image/upload', [ImageController::class, 'upload'])->name('image.upload');
+    Route::post('/image/upload', [ImageController::class, 'upload'])->name('image.upload');
 
     Route::get('/admin/categorys', Categorys::class)->name('categories');
     Route::get('/admin/categorys/edit/{id}', CategoryEdit::class)->name('categories.edit');
@@ -98,32 +102,36 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/products', ProductsAdmin::class)->name('admin.products');
     Route::get('/admin/products/create', CreateProduct::class)->name('admin.products.create');
     Route::get('/admin/products/edit/{id}', EditProduct::class)->name('admin.products.edit');
-    route::get('/admin/products/Threedview/{id}', Threedview::class)->name('admin.products.threedview');
-    route::post('/admin/products/upload', [fileController::class, 'upload'])->name('file.upload');
+    Route::get('/admin/products/Threedview/{id}', Threedview::class)->name('admin.products.threedview');
+    Route::post('/admin/products/upload', [fileController::class, 'upload'])->name('file.upload');
     
-    route::get('/admin/sales', Sales::class)->name('sales');
-    route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');
-    route::get('/admin/sales/edit/{id}', EditSale::class)->name('sales.edit');
+    Route::get('/admin/sales', Sales::class)->name('sales');
+    Route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');
+    Route::get('/admin/sales/edit/{id}', EditSale::class)->name('sales.edit');
 
-    route::get('/admin/customers', CustomersIndex::class)->name('customers');
-    route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');
-    route::get('/admin/customers/edit/{id}', EditCustomers::class)->name('customers.edit');
-    route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
+    Route::get('/admin/customers', CustomersIndex::class)->name('customers');
+    Route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');
+    Route::get('/admin/customers/edit/{id}', EditCustomers::class)->name('customers.edit');
+    Route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
 
-    route::get('/admin/simulations/creditcard', Creditcard::class)->name('simulations.creditcard');
-    route::get('/admin/simulations/devices', Devices::class)->name('simulations.devices');
+    Route::get('/admin/simulations/creditcard', Creditcard::class)->name('simulations.creditcard');
+    Route::get('/admin/simulations/devices', Devices::class)->name('simulations.devices');
+
+    Route::get('/admin/manager/simulations/creditcard', SimuCredit::class)->name('manager.simulations.credit');
+    Route::get('/admin/manager/simulations/creditcard/create', SimuCreditCreate::class)->name('manager.simulations.credit.create');
+    Route::get('/admin/manager/simulations/creditcard/edit/{id}', SimuCreditEdit::class)->name('manager.simulations.credit.edit');
     
-    route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
-    route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');
+    Route::get('/admin/manager/simulations/devices', SimuDevice::class)->name('manager.simulations.device');
+    Route::get('/admin/manager/simulations/devices/create', SimuDeviceCreate::class)->name('manager.simulations.device.create');
+    Route::get('/admin/manager/simulations/devices/edit/{id}', SimuDeviceEdit::class)->name('manager.simulations.device.edit');
+    
+    Route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
+    Route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');
     Route::get('/admin/relatory/edit/{id}', EditRelatory::class)->name('relatory.edit');
 
     Route::get('/admin/users', UsersIndex::class)->name('users');
     Route::get('/admin/users/create', UsersCreate::class)->name('users.create');
     Route::get('/admin/users/edit/{id}', UsersEdit::class)->name('users.edit');
-
-    Route::get('/admin/manager/simulations/creditcard', SimuCredit::class)->name('manager.simulations.credit');
-    Route::get('/admin/manager/simulations/creditcard/create', SimuCreditCreate::class)->name('manager.simulations.credit.create');
-    Route::get('/admin/manager/simulations/creditcard/edit/{id}', SimuCreditEdit::class)->name('manager.simulations.credit.edit');
 
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');
