@@ -34,6 +34,9 @@ use App\Livewire\Admin\Customers\Create as CreateCustomers;
 use App\Livewire\Admin\Customers\Edit as EditCustomers;
 use App\Livewire\Admin\Customers\Sale as CreateSaleCustomer;
 
+use App\Livewire\Admin\Simulations\Creditcard;
+use App\Livewire\Admin\Simulations\Devices;
+
 use App\Livewire\Admin\Manager\Relatory\Index as RelatoryIndex;
 use App\Livewire\Admin\Manager\Relatory\Create as CreateRelatory;
 use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
@@ -41,6 +44,10 @@ use App\Livewire\Admin\Manager\Relatory\Edit as EditRelatory;
 use App\Livewire\Admin\Manager\Users\Index as UsersIndex;
 use App\Livewire\Admin\Manager\Users\Create as UsersCreate;
 use App\Livewire\Admin\Manager\Users\Edit as UsersEdit;
+
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Index as SimuCredit;
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Create as SimuCreditCreate;
+use App\Livewire\Admin\Manager\Simulations\Creditcard\Edit as SimuCreditEdit;
 
 use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
@@ -102,6 +109,9 @@ Route::middleware('auth')->group(function () {
     route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');
     route::get('/admin/customers/edit/{id}', EditCustomers::class)->name('customers.edit');
     route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
+
+    route::get('/admin/simulations/creditcard', Creditcard::class)->name('simulations.creditcard');
+    route::get('/admin/simulations/devices', Devices::class)->name('simulations.devices');
     
     route::get('/admin/relatory', RelatoryIndex::class)->name('relatory');
     route::get('/admin/relatory/create', CreateRelatory::class)->name('relatory.create');
@@ -110,6 +120,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/users', UsersIndex::class)->name('users');
     Route::get('/admin/users/create', UsersCreate::class)->name('users.create');
     Route::get('/admin/users/edit/{id}', UsersEdit::class)->name('users.edit');
+
+    Route::get('/admin/manager/simulations/creditcard', SimuCredit::class)->name('manager.simulations.credit');
+    Route::get('/admin/manager/simulations/creditcard/create', SimuCreditCreate::class)->name('manager.simulations.credit.create');
+    Route::get('/admin/manager/simulations/creditcard/edit/{id}', SimuCreditEdit::class)->name('manager.simulations.credit.edit');
 
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');

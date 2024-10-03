@@ -13,5 +13,6 @@ class Simulations extends Model
 
     protected $fillable = [
         'percentagerate',
+        'rate_name',
     ];
 }
