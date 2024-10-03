@@ -53,6 +53,8 @@ use App\Livewire\Admin\Manager\Users\Index as UsersIndex;
 use App\Livewire\Admin\Manager\Users\Create as UsersCreate;
 use App\Livewire\Admin\Manager\Users\Edit as UsersEdit;
 
+use App\Livewire\Admin\Manager\Business\Index as BusinessIndex;
+
 use App\Livewire\Admin\Custom\Hero\Index as HeroIndex;
 use App\Livewire\Admin\Custom\Hero\Create as HeroCreate;
 use App\Livewire\Admin\Custom\Hero\Edit as HeroEdit;
@@ -132,6 +134,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/users', UsersIndex::class)->name('users');
     Route::get('/admin/users/create', UsersCreate::class)->name('users.create');
     Route::get('/admin/users/edit/{id}', UsersEdit::class)->name('users.edit');
+
+    Route::get('/admin/business', BusinessIndex::class)->name('business');
 
     Route::get('/admin/custom/hero', HeroIndex::class)->name('hero');
     Route::get('/admin/custom/hero/create', HeroCreate::class)->name('hero.create');
