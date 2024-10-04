@@ -34,6 +34,10 @@ use App\Livewire\Admin\Customers\Create as CreateCustomers;
 use App\Livewire\Admin\Customers\Edit as EditCustomers;
 use App\Livewire\Admin\Customers\Sale as CreateSaleCustomer;
 
+use App\Livewire\Admin\Reviews\Index as ReviewIndex;
+use App\Livewire\Admin\Reviews\Create as ReviewCreate;
+use App\Livewire\Admin\Reviews\Edit as ReviewEdit;
+
 use App\Livewire\Admin\Simulations\Creditcard;
 use App\Livewire\Admin\Simulations\Devices;
 
@@ -115,6 +119,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');
     Route::get('/admin/customers/edit/{id}', EditCustomers::class)->name('customers.edit');
     Route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
+
+    Route::get('/admin/reviews', ReviewIndex::class)->name('reviews');
+    Route::get('/admin/reviews/create/{id}', ReviewCreate::class)->name('reviews.create');
+    Route::get('/admin/reviews/edit/{id}', ReviewEdit::class)->name('reviews.edit');
 
     Route::get('/admin/simulations/creditcard', Creditcard::class)->name('simulations.creditcard');
     Route::get('/admin/simulations/devices', Devices::class)->name('simulations.devices');
