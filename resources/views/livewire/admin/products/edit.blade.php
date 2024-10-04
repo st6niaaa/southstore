@@ -43,13 +43,33 @@
                          </div>
                      </div> 
                  </div>
-                 <div class="sm:col-span-2 sm:col-start-1 mt-2">
-                    <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Imagem</label>
-                    <div class="mt-2">
-                        <input wire:model="image" type="text" placeholder="link aqui..." name="image" id="image" class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                 <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
+                    <div class="sm:col-span-2 sm:col-start-1">
+                        <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Imagem</label>
+                        <div class="mt-2">
+                            <input wire:model="image" type="text" placeholder="link aqui..." name="image" id="image" class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Valor Pago</label>
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-gray-900">R$</span>
+                                <input wire:model="bought_value" type="number" placeholder="2000" min="0" name="bought" id="bought_value" class="block w-full max-w-xs px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="city" class="block text-sm font-medium leading-6 text-gray-900">IMEI</label>
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2">
+                                <input wire:model="imei" type="text" placeholder="356303485030785" name="imei" id="imei" class="block w-full max-w-xs px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
                     </div>
                 </div>
-             </div>
+                
+            </div>
              <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                  <button wire:click="editProduct" type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto">Salvar</button>
              </div>

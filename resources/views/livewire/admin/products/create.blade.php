@@ -59,6 +59,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="sm:col-span-2">
+                        <label for="city" class="block text-sm font-medium leading-6 text-gray-900">IMEI</label>
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2">
+                                <input wire:model="imei" type="text" placeholder="356303485030785" name="imei" id="imei" class="block w-full max-w-xs px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

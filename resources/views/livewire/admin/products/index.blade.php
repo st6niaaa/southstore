@@ -20,6 +20,12 @@
                         Preço
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Valor Pago
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        IMEI
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Criado em
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -42,6 +48,12 @@
                     </td>
                     <td class="px-6 py-4">
                         R${{ $product->price  }}
+                    </td>
+                    <td class="px-6 py-4">
+                        R${{ $product->bought_value  }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $product->imei  }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $product->created_at->format('d/m/Y')  }}

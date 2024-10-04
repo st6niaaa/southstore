@@ -17,5 +17,6 @@ class Products extends Model
         'created_at',
         'image_url',
         'bought_value',
+        'imei',
     ];
 }

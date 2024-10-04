@@ -12,6 +12,7 @@ class Create extends Component
     public string $category = '';
     public string $price = '';
     public string $bought_value = '';
+    public string $imei = '';
     public string $image;
     public $description;
 
@@ -23,6 +24,7 @@ class Create extends Component
             'price' => 'required',
             'description' => 'required',
             'bought_value' => 'required',
+            'imei' => 'required',
             'image' => 'required',
         ]);
 
@@ -33,6 +35,7 @@ class Create extends Component
             'description' => $this->description,
             'bought_value' => $this->bought_value,
             'image_url' => $this->image,
+            'imei' => $this->imei,
         ]);
 
         redirect()->route('admin.products');
