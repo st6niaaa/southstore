@@ -50,7 +50,7 @@ class Index extends Component
                 'review_code' => $randomcode,
             ]);
     
-            $reviewlink = config('APP_URL') . '/' . 'review/' . $id . '/' . $randomcode;
+            $reviewlink = config('APP_URL') . '/' . 'review/' . $randomcode;
             return redirect()->away($reviewlink); 
         }
     
