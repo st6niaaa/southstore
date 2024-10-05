@@ -49,9 +49,6 @@
                       <button wire:click="deleteReview({{ $review->id }})">
                           <i class="fa fa-trash text-red-500"></i>
                       </button>
-                      <a href="{{ route('sales.edit', $review->id) }}"><button class="">
-                          <i class="fa fa-pen text-blue-500"></i>
-                      </button></a>
                     </td>
                 </tr>
              

@@ -35,8 +35,6 @@ use App\Livewire\Admin\Customers\Edit as EditCustomers;
 use App\Livewire\Admin\Customers\Sale as CreateSaleCustomer;
 
 use App\Livewire\Admin\Reviews\Index as ReviewIndex;
-use App\Livewire\Admin\Reviews\Create as ReviewCreate;
-use App\Livewire\Admin\Reviews\Edit as ReviewEdit;
 
 use App\Livewire\Admin\Simulations\Creditcard;
 use App\Livewire\Admin\Simulations\Devices;
@@ -66,6 +64,8 @@ use App\Livewire\Admin\Custom\Hero\Edit as HeroEdit;
 use App\Livewire\Admin\Custom\Qs\Index as QsIndex;
 use App\Livewire\Admin\Custom\Contact\Index as ContactIndex;
 
+use App\Livewire\Review\Index as Review;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +89,7 @@ Route::get('/contato', Contact::class)->name('Contact');
 
 Route::get('/produto/{id}', View::class)->name('PV');
 
+Route::get('/review/{id}', Review::class)->name('Review');
 
 Route::middleware('guest')->group(function () {
     Route::get('/acesso', Login::class)->name('login');
@@ -121,8 +122,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/customers/sale/{id}', CreateSaleCustomer::class)->name('customers.sale');
 
     Route::get('/admin/reviews', ReviewIndex::class)->name('reviews');
-    Route::get('/admin/reviews/create/{id}', ReviewCreate::class)->name('reviews.create');
-    Route::get('/admin/reviews/edit/{id}', ReviewEdit::class)->name('reviews.edit');
 
     Route::get('/admin/simulations/creditcard', Creditcard::class)->name('simulations.creditcard');
     Route::get('/admin/simulations/devices', Devices::class)->name('simulations.devices');
