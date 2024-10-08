@@ -41,6 +41,7 @@ class Create extends Component
             'price' => $this->product->price,
             'payment_method' => $this->paymentmethod,
             'installments' => $this->installments,
+            'bought_value' => $this->product->bought_value,
         ]);
 
         // check if to delete the product

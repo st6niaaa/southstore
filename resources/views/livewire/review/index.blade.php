@@ -22,16 +22,7 @@
                         <label for="comment" class="block mb-2 text-sm font-medium text-gray-900">Fale Mais Sobre a Compra</label>
                         <input wire:model="comment" type="text" name="comment" id="comment" placeholder="Minha compra foi incrível!" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2 px-3" required="">
                     </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-start">
-                            <div class="flex items-center h-5">
-                              <input wire:model="isanonymous" id="anonymous" aria-describedby="anonymous" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 " required="">
-                            </div>
-                            <div class="ml-3 text-sm">
-                              <label for="anonymous" class="text-gray-500">Avaliação Anônima</label>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <button wire:click="sendReview" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Enviar Avaliação</button>
                 </div>
             </div>

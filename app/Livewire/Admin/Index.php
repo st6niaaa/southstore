@@ -10,6 +10,30 @@ use App\Models\Relatory;
 
 class Index extends Component
 {
+    function getSalesPercentageChange() {
+      $currentTime = Carbon::now();
+    
+      // Current month sales
+      $currentMonthSales = Sales::whereYear('created_at', $currentTime->year)
+        ->whereMonth('created_at', $currentTime->month)
+        ->count();
+    
+      // Previous month sales
+      $previousMonth = $currentTime->subMonth();
+      $previousMonthSales = Sales::whereYear('created_at', $previousMonth->year)
+        ->whereMonth('created_at', $previousMonth->month)
+        ->count();
+    
+      // Calculate percentage change
+      if ($previousMonthSales > 0) {
+        $percentageChange = (($currentMonthSales - $previousMonthSales) / $previousMonthSales) * 100;
+      } else {
+        $percentageChange = $currentMonthSales > 0 ? 100 : 0; // Handle cases where there were no sales in the previous month
+      }
+    
+      return $percentageChange;
+    }
+
     public function render()
     {
         $currentTime = Carbon::now('America/Sao_Paulo');
@@ -63,8 +87,36 @@ class Index extends Component
         $revenuePerYear += $addvalueyear;
         $revenuePerYear -= $reducevalueyear;
         // Format revenue with "k" for thousands
-        $formattedRevenuePerMonth = $this->formatRevenue($revenuePerMonth);
-        $formattedRevenuePerYear = $this->formatRevenue($revenuePerYear);
+        $formattedRevenuePerMonth = $this->format($revenuePerMonth);
+        $formattedRevenuePerYear = $this->format($revenuePerYear);
+
+        $grossRevenue = Sales::whereYear('created_at', $currentTime->year)
+            ->whereMonth('created_at', $currentTime->month)
+            ->sum('price');
+
+        $salesMonth = Sales::whereYear('created_at', $currentTime->year)
+            ->whereMonth('created_at', $currentTime->month)
+            ->get();
+        
+        $salesYear = Sales::whereYear('created_at', $currentTime->year)
+            ->get();
+
+        $totalProfitMonth = 0;
+        foreach ($salesMonth as $sale)
+        {
+            $profit = $sale->price - $sale->bought_value;
+            $totalProfitMonth += $profit;
+        }
+
+        $totalProfitYear = 0;
+        foreach ($salesYear as $sale)
+        {
+            $profit = $sale->price - $sale->bought_value;
+            $totalProfitYear += $profit;
+        }
+        
+        $formattedProfitM = $this->format($totalProfitMonth);
+        $formattedProfitY = $this->format($totalProfitYear);
 
         return view('livewire.admin.index', [
             'greeting' => $greeting,
@@ -73,11 +125,15 @@ class Index extends Component
             'revenuePerMonthChart' => $revenuePerMonth,
             'revenuePerYearChart' => $revenuePerYear,
             'revenuePerMonth' => $formattedRevenuePerMonth, 
-            'revenuePerYear' => $formattedRevenuePerYear, 
+            'revenuePerYear' => $formattedRevenuePerYear,
+            'grossRevenue' => $grossRevenue,
+            'profitMonth' => $formattedProfitM,
+            'profitYear' => $formattedProfitY,
+            'getSalesPercentageChange' => $this->getSalesPercentageChange(),
         ])->layout('components.layouts.admin');
     }
 
-    private function formatRevenue($revenue)
+    private function format($revenue)
     {
         if ($revenue >= 1000) {
             return number_format($revenue / 1000, 1) . 'k'; 

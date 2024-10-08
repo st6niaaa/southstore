@@ -93,7 +93,7 @@
 
           @foreach ($reviews as $review)
               <div class="max-w-sm font-family p-6 bg-white border border-gray-200 rounded-lg shadow">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">@if ($review->is_anonymous == true) Anônimo @else {{ $review->reviewer_name }} @endif</h5>
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 ">{{ $review->reviewer_name }}</h5>
                 <p class="mb-3 font text-gray-500">{{ $review->reviewer_desc }}</p>
                 @if ($review->reviewer_grade == 0)
                   <i class="fa-regular fa-star text-gray-400"></i>

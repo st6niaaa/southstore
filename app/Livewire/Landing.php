@@ -17,7 +17,7 @@ class Landing extends Component
 
     public function render()
     {
-        $reviews = Review::latest()->take(4)->get();
+        $reviews = Review::latest()->take(4)->get()->whereNotNull('reviewer_grade');
         return view('livewire.landing', [
             'reviews' => $reviews,
         ]);

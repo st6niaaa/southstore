@@ -20,5 +20,6 @@ class Sales extends Model
         'payment_method',
         'installments',
         'created_at',
+        'bought_value',
     ];
 }

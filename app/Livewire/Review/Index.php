@@ -10,7 +10,6 @@ class Index extends Component
     public $review;
     public $rating;
     public $comment;
-    public $isanonymous;
     public $isComplete;
 
     public function mount($id)
@@ -31,13 +30,6 @@ class Index extends Component
 
         $this->review->reviewer_grade = $this->rating;
         $this->review->reviewer_desc = $this->comment;
-        
-        if ($this->isanonymous) {
-            $this->review->is_anonymous = true;
-        } else {
-            $this->review->is_anonymous = false;
-        }
-
         $this->review->save();
         $this->isComplete = true;
 
