@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     public function deleteReview($id)
     {
         $notificationService = new NotificationService();
@@ -27,7 +29,9 @@ class Index extends Component
 
     public function render()
     {
-        $reviews = Review::latest()->paginate(10);
+        $reviews = Review::where(function ($query) {
+            $query->where('reviewer_name', 'like', '%' . $this->search . '%');
+        })->latest()->paginate(10);
         return view('livewire.admin.reviews.index', [
             'reviews' => $reviews,
         ])->layout('components.layouts.admin');

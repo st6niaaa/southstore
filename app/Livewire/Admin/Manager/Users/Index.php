@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     public function deleteUser($id)
     {
         $notificationService = new NotificationService();
@@ -53,11 +55,16 @@ class Index extends Component
         redirect()->route('users');
     }
 
-    public function render()
+     public function render()
     {
-        $users = User::paginate(10);
+        $users = User::where(function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%')
+                  ->orWhere('email', 'like', '%' . $this->search . '%'); 
+        })->paginate(10);
+
         return view('livewire.admin.manager.users.index', [
             'users' => $users,
+            'search' => $this->search,
         ])->layout('components.layouts.admin');
     }
 }

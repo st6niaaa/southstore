@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     public function deleteCustomer($id)
     {
         $notificationService = new notificationService;
@@ -27,7 +29,13 @@ class Index extends Component
     
     public function render()
     {
-        $customers = Customers::latest()->paginate(10);
+        $customers = Customers::where(function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%')
+                  ->orWhere('email', 'like', '%' . $this->search . '%')
+                  ->orWhere('number', 'like', '%' . $this->search . '%')
+                  ->orWhere('cpf', 'like', '%' . $this->search . '%')
+                  ->orWhere('address', 'like', '%' . $this->search . '%');
+        })->latest()->paginate(10);
 
         return view('livewire.admin.customers.index', [
             'customers' => $customers,

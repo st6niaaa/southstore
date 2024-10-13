@@ -4,6 +4,7 @@
         <a href="{{ route('admin.products.create')}}"><button class="text-sm bg-blue-600 border border-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-md">Novo Produto</button></a>
     </div>
     <div class="relative overflow-x-auto rounded-md">
+        <input wire:model.lazy="search" type="text" placeholder="Pesquise aqui" name="search" id="search" class="px-3 rounded-md border-0 py-1.5 mb-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>

@@ -13,6 +13,8 @@ class Index extends Component
 {
     use WithPagination;
 
+    public $search = '';
+
     public function deleteReserve($id)
     {
         $notificationService = new notificationService();
@@ -66,10 +68,16 @@ class Index extends Component
 
     public function render()
     {
-        $reserves = Reserve::latest()->paginate(10);
+        $reserves = Reserve::where(function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%')
+                  ->orWhere('email', 'like', '%' . $this->search . '%')
+                  ->orWhere('number', 'like', '%' . $this->search . '%')
+                  ->orWhere('product_name', 'like', '%' . $this->search . '%');
+        })->latest()->paginate(10);
         
         return view('livewire.admin.reserves.index', [
-            'reserves' => $reserves
+            'reserves' => $reserves,
+            'search' => $this->search,
         ])->layout('components.layouts.admin');
     }
 }

@@ -11,6 +11,8 @@ class Index extends Component
 {
     use WithPagination; // Apply the trait
 
+    public $search = '';
+
     public function deleteProduct($id)
     {
         $notificationService = new NotificationService();
@@ -29,9 +31,14 @@ class Index extends Component
 
     public function render()
     {
-        $products = Products::latest()->paginate(10);
+        $products = Products::where(function ($query) {
+            $query->where('name', 'like', '%' . $this->search . '%')
+                  ->orWhere('imei', 'like', '%' . $this->search . '%');
+        })->latest()->paginate(10);
+        
         return view('livewire.admin.products.index', [
             'products' => $products,
+            'search' => $this->search,
         ])->layout('components.layouts.admin');
     }
 }
