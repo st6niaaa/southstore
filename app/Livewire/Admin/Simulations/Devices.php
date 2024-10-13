@@ -15,11 +15,17 @@ class Devices extends Component
     public function calculateDevice()
     {
         $this->validate([
-            'selectedItems' => "required",
-            'payvalue' => "required",
+            'selectedItems' => "required|array", // Ensure it's an array of IDs
+            'payvalue' => "required|numeric", 
         ]);
-        $this->sum = array_sum($this->selectedItems);
-
+    
+        $this->sum = 0; 
+    
+        foreach ($this->selectedItems as $itemId) {
+            $breakdown = Breakdown::findOrFail($itemId); 
+            $this->sum += $breakdown->value; 
+        }
+    
         $this->finalpayvalue = $this->payvalue - $this->sum;
         return;
     }

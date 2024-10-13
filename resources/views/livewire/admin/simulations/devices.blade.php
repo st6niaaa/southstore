@@ -14,7 +14,7 @@
                         <div class="mt-2">
                             <select multiple class="form-control block w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" id="items" wire:model="selectedItems">
                                 @foreach ($breakdowns as $breakdown)
-                                        <option value="{{ $breakdown->value }}">{{ $breakdown->name }}</option>
+                                        <option value="{{ $breakdown->id }}">{{ $breakdown->name }}</option>
                                     @endforeach
 
                                 </select>
