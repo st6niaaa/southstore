@@ -33,7 +33,7 @@
                 </div>
                 <div class="mt-2 font-1xl">
                     @if ($this->iscalculated)
-                        O valor da taxa será de <span class="font-semibold">{{ $this->ratevalue }}</span>. E o valor total do produto será de <span class="font-semibold">{{ $this->totalvalue }}</span>.
+                        O valor da taxa será de R$<span class="font-semibold">{{ $this->ratevalue }}</span>. E o valor total do produto será de R$<span class="font-semibold">{{ $this->totalvalue }}</span>.
                     @endif
                 </div>
             </div>
