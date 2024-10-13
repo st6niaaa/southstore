@@ -59,7 +59,7 @@ class Index extends Component
 
     public function render()
     {
-        $sales = Sales::paginate(10);
+        $sales = Sales::latest()->paginate(10);
         return view('livewire.admin.sales.index', [
             'sales' => $sales,
         ])->layout('components.layouts.admin');

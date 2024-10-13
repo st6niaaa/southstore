@@ -27,7 +27,7 @@ class Index extends Component
 
     public function render()
     {
-        $breakdowns = Breakdown::paginate(10);
+        $breakdowns = Breakdown::latest()->paginate(10);
         return view('livewire.admin.manager.simulations.devices.index', [
             'breakdowns' => $breakdowns,
         ])->layout('components.layouts.admin');

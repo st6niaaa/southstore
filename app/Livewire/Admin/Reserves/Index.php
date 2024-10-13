@@ -66,7 +66,7 @@ class Index extends Component
 
     public function render()
     {
-        $reserves = Reserve::paginate(10);
+        $reserves = Reserve::latest()->paginate(10);
         
         return view('livewire.admin.reserves.index', [
             'reserves' => $reserves

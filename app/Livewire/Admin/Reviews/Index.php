@@ -27,7 +27,7 @@ class Index extends Component
 
     public function render()
     {
-        $reviews = Review::paginate(10);
+        $reviews = Review::latest()->paginate(10);
         return view('livewire.admin.reviews.index', [
             'reviews' => $reviews,
         ])->layout('components.layouts.admin');

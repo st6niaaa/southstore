@@ -27,7 +27,7 @@ class Index extends Component
     
     public function render()
     {
-        $customers = Customers::paginate(10);
+        $customers = Customers::latest()->paginate(10);
 
         return view('livewire.admin.customers.index', [
             'customers' => $customers,

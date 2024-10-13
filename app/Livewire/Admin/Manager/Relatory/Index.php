@@ -28,7 +28,7 @@ class Index extends Component
     
     public function render()
     {
-        $relatorys = Relatory::paginate(10);
+        $relatorys = Relatory::latest()->paginate(10);
         
         return view('livewire.admin.manager.relatory.index', [
             'relatorys' => $relatorys,

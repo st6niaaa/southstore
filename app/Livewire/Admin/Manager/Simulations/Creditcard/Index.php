@@ -27,7 +27,7 @@ class Index extends Component
 
     public function render()
     {
-        $simulations = Simulations::paginate(10);
+        $simulations = Simulations::latest()->paginate(10);
         
         return view('livewire.admin.manager.simulations.creditcard.index', [
             'simulations' => $simulations,

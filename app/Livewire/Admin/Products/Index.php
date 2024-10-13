@@ -29,7 +29,7 @@ class Index extends Component
 
     public function render()
     {
-        $products = Products::paginate(10);
+        $products = Products::latest()->paginate(10);
         return view('livewire.admin.products.index', [
             'products' => $products,
         ])->layout('components.layouts.admin');
