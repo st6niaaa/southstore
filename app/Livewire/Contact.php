@@ -3,11 +3,15 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Contact as ContactModel;
 
 class Contact extends Component
 {
     public function render()
     {
-        return view('livewire.contact');
+        $contact = ContactModel::first();
+        return view('livewire.contact', [
+            'contact' => $contact,
+        ]);
     }
 }

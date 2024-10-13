@@ -1,3 +1,5 @@
-<div>
-    {{-- Because she competes with no one, no one can compete with her. --}}
+<div class="mb-[310px] md:mb-[420px]">
+    <div class="p-5 font-family"> 
+        <span>{!! $qs->text !!}</span>
+    </div>
 </div>

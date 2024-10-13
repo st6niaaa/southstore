@@ -46,7 +46,9 @@ class Edit extends Component
         $this->sale->number = $this->number;
         $this->sale->cpf = $this->cpf;
         $this->sale->address = $this->address;
-        $this->sale->payment_method = $this->paymentmethod;
+        $this->sale->payment_method =  ($this->paymentmethod == 'Cartão de Crédito') 
+                                    ? $this->paymentmethod . ' (' . $this->installments . 'x)' 
+                                    : $this->paymentmethod;
         if ($this->sale->save()) {
             $notificationService->notify("success", "Venda editada com sucesso!", 3000);
         } else {

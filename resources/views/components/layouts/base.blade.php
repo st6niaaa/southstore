@@ -72,14 +72,6 @@
         
                 <div class="font-family flex flex-col items-center sm:flex-row sm:justify-between">
                     <p class="text-sm text-gray-500">© Copyright 2022 - {{ date('Y') }}. Alguns direitos reservados.</p>
-        
-                    <div class="flex mt-3 -mx-2 sm:mt-0">
-                        <a href="#" class="mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500" aria-label="Reddit"> Teams </a>
-        
-                        <a href="#" class="mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500" aria-label="Reddit"> Privacy </a>
-        
-                        <a href="#" class="mx-2 text-sm text-gray-500 transition-colors duration-300 hover:text-gray-500" aria-label="Reddit"> Cookies </a>
-                    </div>
                 </div>
             </div>
         </footer>

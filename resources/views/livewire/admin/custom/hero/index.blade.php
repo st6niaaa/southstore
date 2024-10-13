@@ -8,10 +8,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Título
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Descrição
+                        Imagem
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Criado em
@@ -25,11 +22,8 @@
                 @foreach ($heros as $hero)
                 <tr class="bg-white border-b">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $hero->title  }}
+                        {{ $hero->image_url  }}
                     </th>
-                    <td class="px-6 py-4">
-                        {{ $hero->description  }}
-                    </td>
                     <td class="px-6 py-4">
                         {{ $hero->created_at->format('d/m/Y')  }}
                     </td>

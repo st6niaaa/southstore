@@ -9,22 +9,16 @@ use App\Services\NotificationService;
 class Create extends Component
 {
     public $hero;
-    public $title = '';
-    public $description = '';
     public $image = '';
 
     public function createHero()
     {
         $notificationService = new NotificationService();
         $this->validate([
-            'title' => ['required','string','max:255'],
-            'description' => ['required','string'],
             'image' => ['required'],
         ]);
 
         $hero = new Hero();
-        $hero->title = $this->title;
-        $hero->description = $this->description;
         $hero->image_url = $this->image;
         if ($hero->save()) {
             $notificationService->notify("success", "Nova hero adicionada com sucesso!", 3000);

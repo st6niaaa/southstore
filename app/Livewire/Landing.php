@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Hero;
 use App\Models\Review;
+use App\Models\Products;
 
 class Landing extends Component
 {
@@ -18,8 +19,10 @@ class Landing extends Component
     public function render()
     {
         $reviews = Review::latest()->take(4)->get()->whereNotNull('reviewer_grade');
+        $products = Products::latest()->take(4)->get();
         return view('livewire.landing', [
             'reviews' => $reviews,
+            'products' => $products,
         ]);
     }
 }

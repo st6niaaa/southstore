@@ -9,6 +9,8 @@ class QS extends Model
 {
     use HasFactory;
 
+    protected $table = 'qs';
+
     protected $fillable = [
         'text',
     ];

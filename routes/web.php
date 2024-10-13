@@ -29,6 +29,8 @@ use App\Livewire\Admin\Sales\Index as Sales;
 use App\Livewire\Admin\Sales\Create as CreateSale;
 use App\Livewire\Admin\Sales\Edit as EditSale;
 
+use App\Livewire\Admin\Reserves\Index as Reserves;
+
 use App\Livewire\Admin\Customers\Index as CustomersIndex;
 use App\Livewire\Admin\Customers\Create as CreateCustomers;
 use App\Livewire\Admin\Customers\Edit as EditCustomers;
@@ -66,6 +68,8 @@ use App\Livewire\Admin\Custom\Contact\Index as ContactIndex;
 
 use App\Livewire\Review\Index as Review;
 
+use App\Livewire\Reserve\Index as Reserve;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -90,6 +94,7 @@ Route::get('/contato', Contact::class)->name('Contact');
 Route::get('/produto/{id}', View::class)->name('PV');
 
 Route::get('/review/{id}', Review::class)->name('Review');
+Route::get('/reservar/{id}', Reserve::class)->name('Reserve');
 
 Route::middleware('guest')->group(function () {
     Route::get('/acesso', Login::class)->name('login');
@@ -115,6 +120,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/sales', Sales::class)->name('sales');
     Route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');
     Route::get('/admin/sales/edit/{id}', EditSale::class)->name('sales.edit');
+
+    Route::get('/admin/reserves', Reserves::class)->name('reserves');
 
     Route::get('/admin/customers', CustomersIndex::class)->name('customers');
     Route::get('/admin/customers/create', CreateCustomers::class)->name('customers.create');

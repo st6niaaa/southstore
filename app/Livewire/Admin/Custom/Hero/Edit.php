@@ -9,15 +9,11 @@ use App\Services\NotificationService;
 class Edit extends Component
 {
     public $hero;
-    public $title;
-    public $description;
     public $image;
 
     public function mount($id)
     {
         $this->hero = Hero::findOrFail($id);
-        $this->title = $this->hero->title;
-        $this->description = $this->hero->description;
         $this->image = $this->hero->image_url;
     }
 
@@ -25,13 +21,9 @@ class Edit extends Component
     {
         $notificationService = new NotificationService();
         $this->validate([
-            'title' =>'required|max:255',
-            'description' =>'required',
             'image' => 'required',
         ]);
 
-        $this->hero->title = $this->title;
-        $this->hero->description = $this->description;
         $this->hero->image_url = $this->image;
         if ($this->hero->save())
         {

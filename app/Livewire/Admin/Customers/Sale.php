@@ -45,8 +45,9 @@ class Sale extends Component
                 'address' => $this->customer->address,
                 'product_name' => $product->name,
                 'price' => $product->price,
-                'payment_method' => $this->paymentmethod,
-                'installments' => $this->installments,
+                'payment_method' => ($this->paymentmethod == 'Cartão de Crédito') 
+                                    ? $this->paymentmethod . ' (' . $this->installments . 'x)' 
+                                    : $this->paymentmethod,
             ]);
 
             if ($this->istodelete)

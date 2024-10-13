@@ -5,27 +5,14 @@
                <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                    <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
                        <div class="sm:col-span-2 sm:col-start-1">
-                           <label for="city" class="block text-sm font-medium leading-6 text-gray-900">Título</label>
-                           <div class="mt-2">
-                               <input wire:model="title" type="text" placeholder="SouthStore" name="name" id="name" class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                           </div>
-                       </div>
-   
-                       <div class="sm:col-span-2">
-                           <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Descrição</label>
-                           <div class="mt-2">
-                            <input wire:model="description" type="text" placeholder="A melhor loja de iProdutos." name="name" id="name" class="block w-full px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                        <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Imagem</label>
+                        <div class="mt-2">
+                            <div class="flex items-center space-x-2">
+                                <input wire:model="image" type="text" placeholder="link aqui..." name="image" id="image" class="block w-full max-w-xs px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                            </div>
                         </div>
                        </div>
-                       
-                       <div class="sm:col-span-2">
-                           <label for="region" class="block text-sm font-medium leading-6 text-gray-900">Imagem</label>
-                           <div class="mt-2">
-                               <div class="flex items-center space-x-2">
-                                   <input wire:model="image" type="text" placeholder="link aqui..." name="image" id="image" class="block w-full max-w-xs px-3 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
-                               </div>
-                           </div>
-                       </div>
+                      
                    </div>
                </div>
                <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">

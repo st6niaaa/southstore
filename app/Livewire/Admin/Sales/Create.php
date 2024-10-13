@@ -39,8 +39,9 @@ class Create extends Component
             'address' => $this->address,
             'product_name' => $this->product->name,
             'price' => $this->product->price,
-            'payment_method' => $this->paymentmethod,
-            'installments' => $this->installments,
+            'payment_method' => ($this->paymentmethod == 'Cartão de Crédito') 
+                                    ? $this->paymentmethod . ' (' . $this->installments . 'x)' 
+                                    : $this->paymentmethod,
             'bought_value' => $this->product->bought_value,
         ]);
 
