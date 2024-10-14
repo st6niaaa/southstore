@@ -5,6 +5,7 @@ namespace App\Livewire\Reserve;
 use Livewire\Component;
 use App\Models\Reserve;
 use App\Models\Products;
+use App\Http\Controllers\telegramController;
 
 class Index extends Component
 {
@@ -51,7 +52,9 @@ class Index extends Component
                                     ? $this->payment_method . ' (' . $this->installments . 'x)' 
                                     : $this->payment_method,
         ]);
-        
+
+        telegramController::message("🛒 Nova reserva criada! Produto: " . $this->product->name);
+                
         $this->view = 1;
         
         return;
