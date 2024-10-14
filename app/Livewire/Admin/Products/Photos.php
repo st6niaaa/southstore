@@ -7,7 +7,7 @@ use App\Models\Products;
 use Illuminate\Support\Facades\Storage;
 use App\Services\NotificationService;
 
-class Threedview extends Component
+class Photos extends Component
 {
     public $product;
     public $name;
@@ -16,14 +16,15 @@ class Threedview extends Component
     {
         $notificationService = new notificationService();
         $this->product = Products::findOrFail($id);
-        $this->name = $this->product->name;
 
-        $imageFolderPath = 'img/photos/'. $id;
+        $imageFolderPath = 'img/products/'. $id;
         if (file_exists($imageFolderPath . '/'))
         {
-            $notificationService->notify('error', "Já existe imagens anexadas a este produto.");
+            $notificationService->notify('error', "Já existe um 3D aplicado a este produto.");
             redirect()->route('admin.products');
         }
+
+        $this->name = $this->product->name;
     }
     
     private function deleteDirectoryRecursively($dir) {
@@ -49,26 +50,25 @@ class Threedview extends Component
         return rmdir($dir);
     }
 
-    public function remove3DView()
+    public function removePhotos()
     {
         $notificationService = new NotificationService();
-        $productFolderPath = 'img/products/' . $this->product->id;
+        $productFolderPath = 'img/photos/' . $this->product->id;
     
         if (file_exists(public_path($productFolderPath))) {
             $this->deleteDirectoryRecursively(public_path($productFolderPath)); 
     
-            $notificationService->notify("success", "A visualização 3D do produto '". $this->product->name ."' foi removida com sucesso!", 3000);
+            $notificationService->notify("success", "As fotos do produto '". $this->product->name ."' foram removidas com sucesso!", 3000);
         } else {
-            $notificationService->notify("error", "Nenhuma visualização 3D encontrada para este produto.", 3000);
+            $notificationService->notify("error", "Nenhuma foto encontrada para este produto.", 3000);
         }
     
         redirect()->route('admin.products', $this->product->id);
     }
-    
-    
+
     public function render()
     {
-        return view('livewire.admin.products.threedview', [
+        return view('livewire.admin.products.photos', [
             'productid' => $this->product->id,
             'product' => $this->product,
             'name' => $this->name,

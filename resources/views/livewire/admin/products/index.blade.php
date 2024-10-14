@@ -68,10 +68,13 @@
                       </button></a>
                       <a href="{{  route('admin.products.threedview', $product->id) }}"><button class="">
                           <i class="fa-brands fa-unity text-green-500"></i>
-                      </button>
+                      </button></a>
+                      <a href="{{  route('admin.products.photos', $product->id) }}"><button class="">
+                          <i class="fa-solid fa-file-image text-indigo-500"></i>
+                      </button></a>
                       <a href="{{  route('sales.create', $product->id) }}"><button class="">
                           <i class="fa fa-wallet text-yellow-500"></i>
-                      </button>
+                      </button></a>
                     </td>
                 </tr>
              

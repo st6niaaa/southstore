@@ -24,6 +24,7 @@ use App\Livewire\Admin\Products\Index as ProductsAdmin;
 use App\Livewire\Admin\Products\Create as CreateProduct;
 use App\Livewire\Admin\Products\Edit as EditProduct;
 use App\Livewire\Admin\Products\Threedview;
+use App\Livewire\Admin\Products\Photos;
 
 use App\Livewire\Admin\Sales\Index as Sales;
 use App\Livewire\Admin\Sales\Create as CreateSale;
@@ -114,8 +115,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/products', ProductsAdmin::class)->name('admin.products');
     Route::get('/admin/products/create', CreateProduct::class)->name('admin.products.create');
     Route::get('/admin/products/edit/{id}', EditProduct::class)->name('admin.products.edit');
-    Route::get('/admin/products/Threedview/{id}', Threedview::class)->name('admin.products.threedview');
+    Route::get('/admin/products/threedview/{id}', Threedview::class)->name('admin.products.threedview');
+    Route::get('/admin/products/photos/{id}', Photos::class)->name('admin.products.photos');
     Route::post('/admin/products/upload', [fileController::class, 'upload'])->name('file.upload');
+    Route::post('/admin/products/uploadtwo', [fileController::class, 'uploadtwo'])->name('file.uploadtwo');
     
     Route::get('/admin/sales', Sales::class)->name('sales');
     Route::get('/admin/sales/create/{id}', CreateSale::class)->name('sales.create');

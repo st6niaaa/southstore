@@ -37,4 +37,32 @@ class fileController extends Controller
         // Redirect back to admin.products route
         return redirect()->route('admin.products')->with('success', 'Image uploaded and uncompressed successfully!'); 
     }
+
+    public function uploadtwo(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => 'required|integer',
+            'image' => 'required|file|mimes:zip|max:2048',
+        ]);
+
+        $image = $request->file('image');
+        $userId = auth()->user()->id;
+        $productId = $request->input('id');
+        $productinfo = Products::findOrFail($productId);
+
+        $imageName = $productId . '.' . 'zip';
+
+        $destinationPath = 'img/photos/' . $productId;
+
+        $image->move($destinationPath, $imageName);
+
+        $notificationService = new NotificationService();
+        $zipUncompressController = new ZipUncompress();
+        $zipUncompressController->descompactarZip('img/photos/' . $productId . '/' . $imageName, 'img/photos/' . $productId);
+
+        $notificationService->notify("success", "Fotos anexadas ao produto '" . $productinfo->name . "'", 3000);
+        
+        // Redirect back to admin.products route
+        return redirect()->route('admin.products')->with('success', 'Image uploaded and uncompressed successfully!'); 
+    }
 }

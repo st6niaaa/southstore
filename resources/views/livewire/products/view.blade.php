@@ -19,10 +19,12 @@
             <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
 
                 <div class="imgrfd">
-                  @if (file_exists(public_path('img/products/' . $product->id . '/5.png')))
+                  @if (file_exists(public_path('img/products/' . $product->id . '/1.png')))
                       <div id="viewer" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
-                  @else
-                      <img class="mx-auto h-full" src="{{ $product->image_url }}" alt="" />
+                  @endif
+
+                  @if (file_exists(public_path('img/photos/' . $product->id . '/1.png')))
+                      <div id="viewer2" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
                   @endif
                 </div>
             </div>
@@ -83,6 +85,81 @@
         </div>
       </section>
 
+      <script>
+      
+      console.log("Product ID:", {{ $product->id }}); // Add this line for debugging
+        
+        const viewer2 = document.getElementById('viewer2');
+        const productId2 = viewer2.dataset.productId2;
+        
+        const images2 = [
+            @for ($i = 1; $i <= $pngImageCount2; $i++)
+                '{{ asset("img/photos/" . $product->id . "/" . $i . ".png") }}',
+            @endfor
+        ];
+
+let currentIndex2 = 0;
+let isDragging2 = false;
+let startX2;
+
+// Load images2 into the viewer2
+images2.forEach((src, index) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.width = '150%'; // Scale the images2 larger
+    img.style.height = 'auto'; // Maintain aspect ratio
+    img.style.objectFit = 'cover'; // Cover the space without distorting
+    img.style.display = index === 0 ? 'block' : 'none'; // Only show the first image
+    img.classList.add('rounded'); // Add the 'rounded' class
+    viewer2.appendChild(img);
+});
+
+// Change image based on index
+function changeImage2(index) {
+    const imgs = viewer2.getElementsByTagName('img');
+    Array.from(imgs).forEach((img, i) => {
+        img.style.display = i === index ? 'block' : 'none'; // Use display instead of opacity
+    });
+}
+
+// Mouse down event
+function onMouseDown2(event) {
+    isDragging2 = true;
+    startX2 = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX; // Handle touch
+    viewer2.style.cursor = 'grabbing';
+}
+
+// Mouse move event
+function onMouseMove2(event) {
+    if (!isDragging2) return;
+
+    const moveX = startX2 - (event.type === 'mousemove' ? event.clientX : event.touches[0].clientX); // Handle touch
+    if (Math.abs(moveX) > 30) { // Sensitivity
+        currentIndex2 = (currentIndex2 + (moveX > 0 ? 1 : -1) + images2.length) % images2.length;
+        changeImage2(currentIndex2);
+        startX2 = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX; // Reset start position
+    }
+}
+
+// Mouse up event
+function onMouseUp2() {
+    isDragging2 = false;
+    viewer2.style.cursor = 'grab';
+}
+
+// Event listeners for mouse
+viewer2.addEventListener('mousedown', onMouseDown2);
+viewer2.addEventListener('mousemove', onMouseMove2);
+viewer2.addEventListener('mouseup', onMouseUp2);
+
+// Event listeners for touch
+viewer2.addEventListener('touchstart', onMouseDown2);
+viewer2.addEventListener('touchmove', onMouseMove2);
+viewer2.addEventListener('touchend', onMouseUp2);
+
+
+    </script>
+    
       <script>
         console.log("Product ID:", {{ $product->id }}); // Add this line for debugging
         
