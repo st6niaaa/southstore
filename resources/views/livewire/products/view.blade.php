@@ -21,9 +21,7 @@
                 <div class="imgrfd">
                   @if (file_exists(public_path('img/products/' . $product->id . '/1.png')))
                       <div id="viewer" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
-                  @endif
-
-                  @if (file_exists(public_path('img/photos/' . $product->id . '/1.png')))
+                  @elseif (file_exists(public_path('img/photos/' . $product->id . '/1.png')))
                       <div id="viewer2" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
                   @else
                       <img class="mx-auto h-full" src="{{ $product->image_url }}" alt="" />
