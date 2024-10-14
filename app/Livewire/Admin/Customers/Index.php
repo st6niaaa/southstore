@@ -15,7 +15,7 @@ class Index extends Component
 
     public function deleteCustomer($id)
     {
-        $notificationService = new notificationService;
+        $notificationService = new notificationService();
         $customer = Customers::findOrFail($id);
         if ($customer->delete())
         {
