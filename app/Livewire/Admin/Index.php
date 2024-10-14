@@ -108,6 +108,10 @@ class Index extends Component
             $totalProfitMonth += $profit;
         }
 
+        $revenueChartMonth = $totalProfitMonth;
+        $revenueChartMonth += $addvaluemonth;
+        $revenueChartMonth -= $reducevaluemonth;
+
         $totalProfitYear = 0;
         foreach ($salesYear as $sale)
         {
@@ -130,6 +134,7 @@ class Index extends Component
             'profitMonth' => $formattedProfitM,
             'profitYear' => $formattedProfitY,
             'getSalesPercentageChange' => $this->getSalesPercentageChange(),
+            'revenueChartMonth' => $revenueChartMonth,
         ])->layout('components.layouts.admin');
     }
 

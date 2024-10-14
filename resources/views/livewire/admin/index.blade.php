@@ -77,7 +77,7 @@
         datasets: [
           {
             label: "Receita",
-            data: [<?php echo $grossRevenue ?>, <?php echo $revenuePerMonthChart ?>],
+            data: [<?php echo $grossRevenue ?>, <?php echo $revenueChartMonth ?>],
             backgroundColor: [
               "rgb(133, 105, 241)",
               "rgb(164, 101, 241)",
