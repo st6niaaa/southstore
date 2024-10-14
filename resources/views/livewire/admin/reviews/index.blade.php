@@ -51,7 +51,7 @@
                 @endforeach
                 @if ($reviews->hasPages())
                     <tr class="bg-white"> 
-                        <td colspan="5" class="py-1 px-3 text-center">
+                        <td colspan="10" class="py-1 px-3 text-center">
                             {{ $reviews->links() }} 
                         </td>
                     </tr>
