@@ -25,6 +25,8 @@
 
                   @if (file_exists(public_path('img/photos/' . $product->id . '/1.png')))
                       <div id="viewer2" data-product-id="{{ $product->id }}" class="w-[350px]"></div>
+                  @else
+                      <img class="mx-auto h-full" src="{{ $product->image_url }}" alt="" />
                   @endif
                 </div>
             </div>
