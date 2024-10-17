@@ -21,7 +21,7 @@ class View extends Component
     
         if ($this->product->is_reserved != null)
         {
-            redirect()->route('products');
+            redirect()->route('Products');
         }
 
         // Check if the image folder exists
