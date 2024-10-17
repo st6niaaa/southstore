@@ -4,7 +4,7 @@ namespace App\Livewire\Admin\Products;
 
 use Livewire\Component;
 use App\Models\Products; 
-use App\Models\Categorys;
+use App\Models\categorys;
 
 class Create extends Component
 {
@@ -43,7 +43,7 @@ class Create extends Component
 
     public function render()
     {
-        $categories = Categorys::all();
+        $categories = categorys::all();
 
         return view('livewire.admin.products.create', [
             'categories' => $categories,
