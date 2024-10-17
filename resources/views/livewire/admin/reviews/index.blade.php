@@ -20,9 +20,9 @@
                     <th scope="col" class="px-6 py-3">
                         Avaliação Registrada em
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    @if (auth()->user()->role == "Dono") <th scope="col" class="px-6 py-3">
                         Ações
-                    </th>
+                    </th> @endif
                   
                 </tr>
             </thead>
@@ -41,11 +41,11 @@
                     <td class="px-6 py-4">
                         {{ $review->created_at->format('d/m/Y H:i') }}
                     </td>
-                    <td class="px-6 py-4">
+                    @if (auth()->user()->role == "Dono") <td class="px-6 py-4">
                       <button wire:click="deleteReview({{ $review->id }})">
                           <i class="fa fa-trash text-red-500"></i>
                       </button>
-                    </td>
+                    </td> @endif
                 </tr>
              
                 @endforeach
