@@ -53,8 +53,9 @@ class Index extends Component
     public function whatsappCustomer($id)
     {
         $reserve = Reserve::findOrFail($id);
-        $link = "https://wa.me/" . $reserve->number;
-
+        $number = str_replace([' ', '-'], '', $reserve->number); // Remove spaces and hyphens
+        $link = "https://wa.me/" . $number;
+        
         return redirect()->away($link);
     }
 
