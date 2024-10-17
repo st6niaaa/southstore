@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Customers;
 
 use Livewire\Component;
 use App\Models\Customers;
-use App\Services\notificationService;
 
 class Create extends Component
 {
@@ -16,7 +15,6 @@ class Create extends Component
 
     public function createCustomer()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'name' => 'required',
             'email' => 'required',
@@ -32,8 +30,6 @@ class Create extends Component
             'cpf' => $this->cpf,
             'address' => $this->address,
         ]);
-
-        $notificationService->notify('success', 'Cliente criado com sucesso!');
 
         redirect()->route('customers');
     }

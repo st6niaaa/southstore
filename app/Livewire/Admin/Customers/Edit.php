@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Customers;
 
 use Livewire\Component;
 use App\Models\Customers;
-use App\Services\notificationService;
 
 class Edit extends Component
 {
@@ -27,7 +26,6 @@ class Edit extends Component
 
     public function updateCustomer()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'name' => 'required',
             'email' => 'required',
@@ -41,12 +39,7 @@ class Edit extends Component
         $this->customer->number = $this->number;
         $this->customer->cpf = $this->cpf;
         $this->customer->address = $this->address;
-        if ($this->customer->save())
-        {
-            $notificationService->notify('success', "O cliente " . $this->name . " foi editado com sucesso!");
-        } else {
-            $notificationService->notify('error', "O cliente " . $this->name . " não foi editado!");
-        }
+        $this->customer->save();
 
         redirect()->route('customers');
     }
