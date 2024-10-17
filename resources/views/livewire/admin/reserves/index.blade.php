@@ -60,9 +60,9 @@
                         {{ $reserve->created_at->format('d/m/Y H:i') }}
                     </td>
                     <td class="px-6 py-4">
-                        <button wire:click="deleteReserve({{ $reserve->id }})">
+                        @if (auth()->user()->role == "Dono") <button wire:click="deleteReserve({{ $reserve->id }})">
                             <i class="fa fa-trash text-red-500"></i>
-                        </button>
+                        </button> @endif
                         <button wire:click="createSale({{ $reserve->id }})">
                             <i class="fa fa-wallet text-yellow-500"></i>
                         </button>
