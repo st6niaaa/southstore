@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Devices;
 
 use Livewire\Component;
 use App\Models\Breakdown;
-use App\Services\notificationService;
 
 class Edit extends Component
 {
@@ -23,7 +22,6 @@ class Edit extends Component
 
     public function updateBreakdown()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'name' => "required",
             'description' => "required",
@@ -34,12 +32,7 @@ class Edit extends Component
         $this->device->description = $this->description;
         $this->device->value = $this->price;
         
-        if ($this->device->save())
-        {
-            $notificationService->notify('success', "A imperfeição '". $this->name . "' foi editada com sucesso");
-        } else {
-            $notificationService->notify('success', "A imperfeição '" . $this->name . "' não foi editada!");
-        }
+        $this->device->save();
 
         redirect()->route('manager.simulations.device');
     }

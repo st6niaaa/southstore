@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Devices;
 
 use Livewire\Component;
 use App\Models\Breakdown;
-use App\Services\notificationService;
 
 class Create extends Component
 {
@@ -14,7 +13,6 @@ class Create extends Component
 
     public function createBreakdown()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'name' => "required",
             'description' => "required",
@@ -26,8 +24,6 @@ class Create extends Component
             'description' => $this->description,
             'value' => $this->price,
         ]);
-
-        $notificationService->notify('success', "A imperfeição foi criada com sucesso!");
 
         redirect()->route('manager.simulations.device');
     }

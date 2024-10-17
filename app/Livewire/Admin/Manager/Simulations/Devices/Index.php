@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Devices;
 use Livewire\Component;
 use App\Models\Breakdown;
 use Livewire\WithPagination;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -13,14 +12,8 @@ class Index extends Component
 
     public function deleteBreakdown($id)
     {
-        $notificationService = new notificationService();
         $breakdown = Breakdown::findOrFail($id);
-        if ($breakdown->delete())
-        {
-            $notificationService->notify('success', "O registro '" .  $breakdown->name . "' foi deletado com sucesso!");
-        } else {
-            $notificationService->notify('error', "O registro '" . $breakdown->name . "' não foi deletado!");
-        }
+        $breakdown->delete();
 
         redirect()->route('manager.simulations.device');
     }
