@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Custom\Contact;
 
 use Livewire\Component;
 use App\Models\Contact;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -18,17 +17,11 @@ class Index extends Component
 
     public function save()
     {
-        $notificationService = new notificationService();
         $contact = Contact::first();
 
         if ($contact) {
             $contact->text = $this->text;
-            if ($contact->save())
-            {
-                $notificationService->notify('success', 'Contato Atualizado com Sucesso!');
-            } else {
-                $notificationService->notify('error', 'Contato não Atualizado!');
-            }
+            $contact->save();
         }
 
         redirect()->route('admin.contact');

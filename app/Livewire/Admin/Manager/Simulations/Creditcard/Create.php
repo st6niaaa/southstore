@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Creditcard;
 
 use Livewire\Component;
 use App\Models\Simulations;
-use App\Services\notificationService;
 
 class Create extends Component
 {
@@ -13,7 +12,6 @@ class Create extends Component
 
     public function createRate()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'rate_name' => "required",
             'percentagerate' => "required",
@@ -23,8 +21,6 @@ class Create extends Component
             'rate_name' => $this->rate_name,
             'percentagerate' => $this->percentagerate,
         ]);
-
-        $notificationService->notify('success', "Taxa criada com sucesso");
         
         redirect()->route('manager.simulations.credit');
     }

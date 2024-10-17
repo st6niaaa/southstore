@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Creditcard;
 use Livewire\Component;
 use App\Models\Simulations;
 use Livewire\WithPagination;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -13,14 +12,8 @@ class Index extends Component
 
     public function deleteRate($id)
     {
-        $notificationService = new notificationService();
         $rate = Simulations::findOrFail($id);
-        if ($rate->delete())
-        {
-            $notificationService->notify('success', "Taxa '" . $rate->rate_name . "' deletada com sucesso!");
-        } else {
-            $notificationService->notify('error', "A taxa '" . $rate->rate_name  . "' não foi deletada");
-        }
+        $rate->delete();
 
         redirect()->route('manager.simulations.credit');
     }

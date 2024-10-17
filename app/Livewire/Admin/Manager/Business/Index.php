@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Manager\Business;
 
 use Livewire\Component;
 use App\Models\Business;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -47,7 +46,6 @@ class Index extends Component
 
     public function updateBusiness()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'name' => "required",
             'cnpj' => "required",
@@ -65,8 +63,6 @@ class Index extends Component
             'social_capital' => $this->social_capital,
             'address' => $this->address,
         ]);
-
-        $notificationService->notify('success', "Dados da empresa atualizados com sucesso!");
 
         redirect()->route('business');
     }

@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Manager\Simulations\Creditcard;
 
 use Livewire\Component;
 use App\Models\Simulations;
-use App\Services\notificationService;
 
 class Edit extends Component
 {
@@ -21,7 +20,6 @@ class Edit extends Component
 
     public function updateRate()
     {
-        $notificationService = new notificationService();
         $this->validate([
             'rate_name' => "required",
             'percentagerate' => "required",
@@ -29,12 +27,7 @@ class Edit extends Component
 
         $this->rate->rate_name = $this->rate_name;
         $this->rate->percentagerate = $this->percentagerate;
-        if ($this->rate->save())
-        {
-            $notificationService->notify('success', "A taxa '" . $this->rate_name . "' foi editada com sucesso!");
-        } else {
-            $notificationService->notify('error', "A taxa '" . $this->rate_name . "' não foi editada!");
-        }
+        $this->rate->save();
 
         redirect()->route('manager.simulations.credit');
     }

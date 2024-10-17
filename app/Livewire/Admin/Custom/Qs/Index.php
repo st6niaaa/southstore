@@ -4,7 +4,6 @@ namespace App\Livewire\Admin\Custom\Qs;
 
 use Livewire\Component;
 use App\Models\QS;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -24,17 +23,11 @@ class Index extends Component
 
     public function save()
     {
-        $notificationService = new notificationService();
         $qs = QS::first();
 
         if ($qs) {
             $qs->text = $this->text;
-            if ($qs->save())
-            {
-                $notificationService->notify('success', 'Quem Somos Atualizado com Sucesso!');
-            } else {
-                $notificationService->notify('error', 'Quem Somos não Atualizado!');
-            }
+            $qs->save();
         }
 
         redirect()->route('admin.qs');
