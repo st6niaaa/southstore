@@ -17,21 +17,14 @@ class Index extends Component
 
     public function deleteReserve($id)
     {
-        $notificationService = new notificationService();
         $reserve = Reserve::findOrFail($id);
-        if ($reserve->delete())
-        {
-            $notificationService->notify('success', 'Reserva deletada com sucesso!');
-        } else {
-            $notificationService->notify('error', 'Reserva não deletada!');
-        }
+        $reserve->delete();
 
         redirect()->route('reserves');
     }
 
     public function createSale($id)
     {
-        $notificationService = new notificationService();
         $reserve = Reserve::findOrFail($id);
 
         $sale = Sales::create([
@@ -59,9 +52,8 @@ class Index extends Component
 
     public function whatsappCustomer($id)
     {
-        $notificationService = new notificationService();
-
-        $link = "https://wa.me/5553984233841";
+        $reserve = Reserve::findOrFail($id);
+        $link = "https://wa.me/" . $reserve->number;
 
         return redirect()->away($link);
     }
