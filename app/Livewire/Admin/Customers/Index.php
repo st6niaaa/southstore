@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Customers;
 use Livewire\Component;
 use App\Models\Customers;
 use Livewire\WithPagination;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -15,7 +14,6 @@ class Index extends Component
 
     public function deleteCustomer($id)
     {
-        $notificationService = new notificationService();
         $customer = Customers::findOrFail($id);
         $customer->delete();
 
