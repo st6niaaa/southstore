@@ -57,12 +57,12 @@
                         {{ $customer->created_at->format('d/m/Y')  }}
                     </td>
                     <td class="px-6 py-4">
-                      <button wire:click="deleteCustomer({{ $customer->id }})">
+                      @if (auth()->user()->role == "Dono") <button wire:click="deleteCustomer({{ $customer->id }})">
                           <i class="fa fa-trash text-red-500"></i>
                       </button>
                       <a href="{{  route('customers.edit', $customer->id) }}"><button class="">
                           <i class="fa fa-pen text-blue-500"></i>
-                      </button></a>
+                      </button></a> @endif
                       <a href="{{  route('customers.sale', $customer->id) }}"><button class="">
                           <i class="fa fa-wallet text-yellow-500"></i>
                       </button></a>
