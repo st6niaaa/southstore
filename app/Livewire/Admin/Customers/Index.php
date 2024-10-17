@@ -17,12 +17,7 @@ class Index extends Component
     {
         $notificationService = new notificationService();
         $customer = Customers::findOrFail($id);
-        if ($customer->delete())
-        {
-            $notificationService->notify('success', 'Cliente deletado com sucesso!');
-        } else {
-            $notificationService->notify('success', 'Cliente não deletado!');
-        }
+        $customer->delete();
 
         redirect()->route('customers');
     }
