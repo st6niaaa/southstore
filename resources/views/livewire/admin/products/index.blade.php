@@ -59,19 +59,21 @@
                     <td class="px-6 py-4">
                         {{ $product->created_at->format('d/m/Y')  }}
                     </td>
-                    @if (auth()->user()->role == "Dono")  <td class="px-6 py-4">
-                      <button wire:click="deleteProduct({{ $product->id }})">
-                          <i class="fa fa-trash text-red-500"></i>
-                      </button>
-                      <a href="{{  route('admin.products.edit', $product->id) }}"><button class="">
-                          <i class="fa fa-pen text-blue-500"></i>
-                      </button></a>
-                      <a href="{{  route('admin.products.threedview', $product->id) }}"><button class="">
-                          <i class="fa-brands fa-unity text-green-500"></i>
-                      </button></a>
-                      <a href="{{  route('admin.products.photos', $product->id) }}"><button class="">
-                          <i class="fa-solid fa-file-image text-indigo-500"></i>
-                      </button></a> @endif
+                    <td class="px-6 py-4">
+                        @if (auth()->user()->role == "Dono") 
+                            <button wire:click="deleteProduct({{ $product->id }})">
+                                <i class="fa fa-trash text-red-500"></i>
+                            </button>
+                            <a href="{{  route('admin.products.edit', $product->id) }}"><button class="">
+                                <i class="fa fa-pen text-blue-500"></i>
+                            </button></a>
+                            <a href="{{  route('admin.products.threedview', $product->id) }}"><button class="">
+                                <i class="fa-brands fa-unity text-green-500"></i>
+                            </button></a>
+                            <a href="{{  route('admin.products.photos', $product->id) }}"><button class="">
+                                <i class="fa-solid fa-file-image text-indigo-500"></i>
+                            </button></a> 
+                        @endif
                       <a href="{{  route('sales.create', $product->id) }}"><button class="">
                           <i class="fa fa-wallet text-yellow-500"></i>
                       </button></a>
