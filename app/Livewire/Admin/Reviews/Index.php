@@ -5,7 +5,6 @@ namespace App\Livewire\Admin\Reviews;
 use Livewire\Component;
 use App\Models\Review;
 use Livewire\WithPagination;
-use App\Services\notificationService;
 
 class Index extends Component
 {
@@ -15,14 +14,8 @@ class Index extends Component
 
     public function deleteReview($id)
     {
-        $notificationService = new NotificationService();
         $review = Review::findOrFail($id);
-        if ($review->delete()) 
-        {
-            $notificationService->notify('success', 'Avaliação excluída com sucesso!');
-        } else {
-            $notificationService->notify('error', 'Ocorreu um erro ao excluir a avaliação.');
-        }
+        $review->delete();
 
         redirect()->route('reviews');
     }
