@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Reserve;
 use App\Models\Sales;
 use App\Models\Customers;
+use App\Models\Products;
 use Livewire\WithPagination;
 use App\Services\notificationService;
 
@@ -18,6 +19,9 @@ class Index extends Component
     public function deleteReserve($id)
     {
         $reserve = Reserve::findOrFail($id);
+        $product = Products::findOrFail($reserve->product_id);
+        $product->is_reserved = null;
+        $product->save();
         $reserve->delete();
 
         redirect()->route('reserves');
@@ -39,6 +43,7 @@ class Index extends Component
         ]);
         
         $reserve->delete();
+
         Customers::create([
             'name' => $reserve->name,
             'email' => $reserve->email,

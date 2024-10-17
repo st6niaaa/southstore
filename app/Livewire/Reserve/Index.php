@@ -51,7 +51,11 @@ class Index extends Component
             'payment_method' => ($this->payment_method == 'Cartão de Crédito') 
                                     ? $this->payment_method . ' (' . $this->installments . 'x)' 
                                     : $this->payment_method,
+            'product_id' => $this->product->id,
         ]);
+
+        $this->product->is_reserved = true;
+        $this->product->save();
 
         telegramController::message("🛒 Nova reserva criada! Produto: " . $this->product->name);
                 

@@ -20,5 +20,6 @@ class Reserve extends Model
         'product_name',
         'price',
         'payment_method',
+        'product_id',
     ];
 }

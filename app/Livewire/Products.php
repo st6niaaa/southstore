@@ -20,12 +20,19 @@ class Products extends Component
             $this->categoryid = $id;
             $this->products = Product::orderBy('created_at', 'desc')
             ->where('category_id', $id)
+            ->whereNull('is_reserved')
             ->get();
-            $this->productscount = Product::where('category_id', $id)->count();
+            $this->productscount = Product::orderBy('created_at', 'desc')
+            ->where('category_id', $id)
+            ->whereNull('is_reserved')
+            ->count();
         } else {
             $this->products = Product::orderBy('created_at', 'desc')
+            ->whereNull('is_reserved')
             ->get();
-            $this->productscount = Product::count();
+            $this->productscount = Product::orderBy('created_at', 'desc')
+            ->whereNull('is_reserved')
+            ->count();
         }
         
     }

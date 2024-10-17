@@ -19,6 +19,11 @@ class View extends Component
     {
         $this->product = Products::findOrFail($id); 
     
+        if ($this->product->is_reserved != null)
+        {
+            redirect()->route('products');
+        }
+
         // Check if the image folder exists
         $imageFolderPath = 'img/products/'. $this->product->id;
         $this->hasImageFolder = Storage::exists($imageFolderPath);

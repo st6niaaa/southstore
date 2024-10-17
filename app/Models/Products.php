@@ -18,5 +18,6 @@ class Products extends Model
         'image_url',
         'bought_value',
         'imei',
+        'is_reserved',
     ];
 }
