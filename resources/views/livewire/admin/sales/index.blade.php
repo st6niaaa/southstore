@@ -60,15 +60,15 @@
                         {{ $sale->created_at->format('d/m/Y H:i') }}
                     </td>
                     <td class="px-6 py-4">
-                        <button wire:click="deleteSale({{ $sale->id }})">
+                        @if (auth()->user()->role == "Dono") <button wire:click="deleteSale({{ $sale->id }})">
                             <i class="fa fa-trash text-red-500"></i>
-                        </button>
-                        <button wire:click="createReview({{ $sale->id }})">
-                            <i class="fa fa-star text-green-500"></i>
                         </button>
                       <a href="{{ route('sales.edit', $sale->id) }}"><button class="">
                           <i class="fa fa-pen text-blue-500"></i>
-                      </button></a>
+                      </button></a> @endif
+                      <button wire:click="createReview({{ $sale->id }})">
+                          <i class="fa fa-star text-green-500"></i>
+                      </button>
                     </td>
                 </tr>
              
